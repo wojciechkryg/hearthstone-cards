@@ -12,7 +12,6 @@ public class Card {
     private String flavorText;
     private String artist;
     private String className;
-    private byte[] image;
 
     public String getCardId() {
         return cardId;
@@ -92,13 +91,5 @@ public class Card {
 
     public void setClassName(String className) {
         this.className = className;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 }
