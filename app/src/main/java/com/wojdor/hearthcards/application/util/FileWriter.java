@@ -15,17 +15,6 @@ public class FileWriter {
         this.context = context;
     }
 
-    public void write(String fileName, byte[] content) {
-        FileOutputStream outputStream;
-        try {
-            outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            outputStream.write(content);
-            outputStream.close();
-        } catch (Exception error) {
-            Timber.e(error);
-        }
-    }
-
     public void write(String fileName, Bitmap bitmap) {
         FileOutputStream outputStream;
         try {
