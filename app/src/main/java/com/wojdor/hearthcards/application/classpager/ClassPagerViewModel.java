@@ -32,7 +32,11 @@ public class ClassPagerViewModel extends BaseAndroidViewModel {
         disposable.add(cardApi.getVersionInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
-                .subscribe(versionInfoModel -> data.postValue(VersionInfoMapper.map(versionInfoModel)),
+                .subscribe(versionInfoModel -> {
+                            VersionInfo versionInfo = VersionInfoMapper.map(versionInfoModel);
+                            userSession.setVersionInfo(versionInfo);
+                            data.postValue(versionInfo);
+                        },
                         error -> data.postValue(null)));
         return data;
     }
