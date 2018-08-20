@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 
 import java.util.List;
 
-public class InfoModel {
+public class VersionInfoModel {
 
     @Expose
     private String patch;

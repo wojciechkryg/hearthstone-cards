@@ -9,6 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class ServiceGenerator {
 
+    private static final Object LOCK = new Object();
+
     private static ServiceGenerator instance;
 
     private Retrofit retrofit;
@@ -24,7 +26,9 @@ public final class ServiceGenerator {
 
     public static ServiceGenerator getInstance(String baseUrl) {
         if (instance == null) {
-            instance = new ServiceGenerator(baseUrl);
+            synchronized (LOCK) {
+                instance = new ServiceGenerator(baseUrl);
+            }
         }
         return instance;
     }

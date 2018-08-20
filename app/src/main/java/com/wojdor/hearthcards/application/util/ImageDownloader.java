@@ -2,12 +2,12 @@ package com.wojdor.hearthcards.application.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
+
+import java.util.concurrent.ExecutionException;
+
+import timber.log.Timber;
 
 public class ImageDownloader {
 
@@ -20,14 +20,15 @@ public class ImageDownloader {
     }
 
     public void getImage(String fileName, String url) {
-        Glide.with(context)
-                .asBitmap()
-                .load(url)
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                        fileWriter.write(fileName, resource);
-                    }
-                });
+        try {
+            Bitmap bitmap = Glide.with(context)
+                    .asBitmap()
+                    .load(url)
+                    .submit()
+                    .get();
+            fileWriter.write(fileName, bitmap);
+        } catch (InterruptedException | ExecutionException error) {
+            Timber.e(error);
+        }
     }
 }

@@ -1,9 +1,14 @@
 package com.wojdor.hearthcards.domain;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity
 public class Card {
 
-    private String cardId;
+    @PrimaryKey
     private int dbfId;
+    private String cardId;
     private String name;
     private String set;
     private String rarity;

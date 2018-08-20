@@ -2,7 +2,7 @@ package com.wojdor.hearthcards.domain;
 
 import java.util.List;
 
-public class Info {
+public class VersionInfo {
 
     private String version;
     private List<String> classNames;
@@ -39,5 +39,13 @@ public class Info {
 
     public void setLocales(List<String> locales) {
         this.locales = locales;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof VersionInfo) {
+            return ((VersionInfo) object).getVersion().equals(getVersion());
+        }
+        return super.equals(object);
     }
 }
