@@ -12,11 +12,11 @@ import timber.log.Timber;
 public class ImageDownloader {
 
     private Context context;
-    private FileWriter fileWriter;
+    private FileStorage fileStorage;
 
     public ImageDownloader(Context context) {
         this.context = context;
-        fileWriter = new FileWriter(context);
+        fileStorage = new FileStorage(context);
     }
 
     public void getImage(String fileName, String url) {
@@ -26,7 +26,7 @@ public class ImageDownloader {
                     .load(url)
                     .submit()
                     .get();
-            fileWriter.write(fileName, bitmap);
+            fileStorage.write(fileName, bitmap);
         } catch (InterruptedException | ExecutionException error) {
             Timber.e(error);
         }

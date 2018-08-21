@@ -5,12 +5,12 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/ClassPagerAppBar"
+        android:id="@+id/classPagerAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/ClassPagerToolbar"
+            android:id="@+id/classPagerToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -19,7 +19,7 @@
             app:title="@string/app_name" />
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/ClassPagerClassTabLayout"
+            android:id="@+id/classPagerClassTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -27,7 +27,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/ClassPagerClassViewPager"
+        android:id="@+id/classPagerClassViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

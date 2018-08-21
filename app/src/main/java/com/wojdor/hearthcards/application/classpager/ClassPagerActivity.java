@@ -14,9 +14,9 @@ import butterknife.ButterKnife;
 
 public class ClassPagerActivity extends BaseActivity {
 
-    @BindView(R.id.ClassPagerClassViewPager)
+    @BindView(R.id.classPagerClassViewPager)
     ViewPager classViewPager;
-    @BindView(R.id.ClassPagerClassTabLayout)
+    @BindView(R.id.classPagerClassTabLayout)
     TabLayout classTabLayout;
 
     private ClassPagerViewModel viewModel;

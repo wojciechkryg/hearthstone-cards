@@ -3,15 +3,17 @@ package com.wojdor.hearthcards.application.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 
+import java.io.File;
 import java.io.FileOutputStream;
 
 import timber.log.Timber;
 
-public class FileWriter {
+public class FileStorage {
 
+    private static final String PATH_FORMAT = "%s/%s";
     private Context context;
 
-    public FileWriter(Context context) {
+    public FileStorage(Context context) {
         this.context = context;
     }
 
@@ -19,10 +21,15 @@ public class FileWriter {
         FileOutputStream outputStream;
         try {
             outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
             outputStream.close();
         } catch (Exception error) {
             Timber.e(error);
         }
+    }
+
+    public File get(String fileName) {
+        String path = String.format(PATH_FORMAT, context.getFilesDir().getAbsolutePath(), fileName);
+        return new File(path);
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HearthCards</string>
+
+    <string name="item_card_iv_content_description">Card name</string>
 </resources>
