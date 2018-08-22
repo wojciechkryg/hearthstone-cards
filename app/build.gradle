@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion compile_sdk_version
@@ -18,6 +19,8 @@ android {
     }
     buildTypes.each {
         it.buildConfigField 'String', 'HEARTHSTONE_API_KEY', HEARTHSTONE_API_KEY
+        it.buildConfigField 'String', 'ADMOB_HEARTHCARDS_ID', ADMOB_HEARTHCARDS_ID
+        it.resValue 'string', 'admob_bottom_banner_id', ADMOB_HEARTHCARDS_BOTTOM_BANNER_ID
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -28,12 +31,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$android_support_version"
+    implementation "com.android.support:customtabs:$android_support_version"
     implementation "com.android.support:design:$android_support_version"
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
+    implementation "com.google.firebase:firebase-core:$firebase_core_version"
+    implementation "com.google.android.gms:play-services-ads:$ads_version"
     implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
     implementation "com.jakewharton:butterknife:$butterknife_version"
@@ -48,3 +55,5 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

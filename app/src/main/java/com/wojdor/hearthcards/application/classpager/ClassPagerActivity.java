@@ -4,7 +4,10 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseActivity;
 import com.wojdor.hearthcards.domain.VersionInfo;
@@ -18,6 +21,8 @@ public class ClassPagerActivity extends BaseActivity {
     ViewPager classViewPager;
     @BindView(R.id.classPagerClassTabLayout)
     TabLayout classTabLayout;
+    @BindView(R.id.classPagerAdView)
+    AdView adView;
 
     private ClassPagerViewModel viewModel;
     private ClassPagerAdapter classPagerAdapter;
@@ -36,6 +41,8 @@ public class ClassPagerActivity extends BaseActivity {
         classPagerAdapter = new ClassPagerAdapter(getSupportFragmentManager());
         classViewPager.setAdapter(classPagerAdapter);
         classTabLayout.setupWithViewPager(classViewPager);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     private void checkLocalVersionInfo(VersionInfo localVersionInfo) {
