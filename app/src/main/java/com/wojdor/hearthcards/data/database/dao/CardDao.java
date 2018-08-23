@@ -13,11 +13,11 @@ import java.util.List;
 @Dao
 public interface CardDao {
 
-    @Query("SELECT * FROM card")
-    LiveData<List<Card>> getCards();
-
     @Query("SELECT * FROM card WHERE className = :className")
     LiveData<List<Card>> getCardsFromClass(String className);
+
+    @Query("SELECT COUNT(*) FROM card WHERE className = :className")
+    int getAmountOfCardsFromClass(String className);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCards(List<Card> cards);

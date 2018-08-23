@@ -32,8 +32,8 @@ public class ClassPagerActivity extends BaseActivity {
         ButterKnife.bind(this);
         initComponents();
         viewModel = ViewModelProviders.of(this).get(ClassPagerViewModel.class);
-        viewModel.getLocalVersionInfo().observe(this, localVersionInfo ->
-                classPagerAdapter.setItems(localVersionInfo.getClassNames()));
+        viewModel.getClassesWhichHaveCards().observe(this, classNames ->
+                classPagerAdapter.setItems(classNames));
     }
 
     private void initComponents() {

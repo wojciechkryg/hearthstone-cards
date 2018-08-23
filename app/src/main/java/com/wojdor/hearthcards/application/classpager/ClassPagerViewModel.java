@@ -6,7 +6,13 @@ import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.wojdor.hearthcards.application.base.BaseAndroidViewModel;
-import com.wojdor.hearthcards.domain.VersionInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class ClassPagerViewModel extends BaseAndroidViewModel {
 
@@ -14,9 +20,26 @@ public class ClassPagerViewModel extends BaseAndroidViewModel {
         super(application);
     }
 
-    public LiveData<VersionInfo> getLocalVersionInfo() {
-        MutableLiveData<VersionInfo> data = new MutableLiveData<>();
-        data.setValue(userSession.getVersionInfo());
+    public LiveData<List<String>> getClassesWhichHaveCards() {
+        MutableLiveData<List<String>> data = new MutableLiveData<>();
+        Single.fromCallable(() -> {
+            List<String> classNames = userSession.getVersionInfo().getClassNames();
+            return filterClassesWhichHaveCards(classNames);
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(data::setValue);
         return data;
+    }
+
+    @NonNull
+    private List<String> filterClassesWhichHaveCards(List<String> classNames) {
+        List<String> classNamesWithCards = new ArrayList<>();
+        for (String className : classNames) {
+            int amountOfCards = cardDao.getAmountOfCardsFromClass(className);
+            if (amountOfCards == 0) continue;
+            classNamesWithCards.add(className);
+        }
+        return classNamesWithCards;
     }
 }
