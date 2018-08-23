@@ -31,11 +31,22 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
     }
 
     private void checkVersions(VersionInfo remoteVersionInfo, VersionInfo localVersionInfo) {
-        if (localVersionInfo == null || localVersionInfo.notEquals(remoteVersionInfo)) {
+        if (remoteVersionInfo == null && localVersionInfo == null) {
+            showError();
+        } else if (localVersionInfo == null || isNewVersionOnRemote(remoteVersionInfo, localVersionInfo)) {
             startUpdate(remoteVersionInfo);
         } else {
             launchClassPagerActivity();
         }
+    }
+
+    private void showError() {
+        // TODO: Show error dialog
+        finish();
+    }
+
+    private boolean isNewVersionOnRemote(VersionInfo remoteVersionInfo, VersionInfo localVersionInfo) {
+        return remoteVersionInfo != null && localVersionInfo.notEquals(remoteVersionInfo);
     }
 
     private void startUpdate(VersionInfo remoteVersionInfo) {
@@ -59,8 +70,7 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
         if (resultCode == UpdateResultReceiver.RESULT_SUCCESS) {
             launchClassPagerActivity();
         } else {
-            // TODO: Show error dialog
-            finish();
+            showError();
         }
     }
 
