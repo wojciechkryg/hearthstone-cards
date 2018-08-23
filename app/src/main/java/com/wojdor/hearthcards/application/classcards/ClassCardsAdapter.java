@@ -47,6 +47,6 @@ public class ClassCardsAdapter extends RecyclerView.Adapter<ClassCardViewHolder>
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Card card);
+        void onItemClick(View view, Card card);
     }
 }

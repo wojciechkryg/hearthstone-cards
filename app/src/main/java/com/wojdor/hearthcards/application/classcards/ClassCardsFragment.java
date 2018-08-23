@@ -1,6 +1,8 @@
 package com.wojdor.hearthcards.application.classcards;
 
+import android.app.ActivityOptions;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,9 +12,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseFragment;
+import com.wojdor.hearthcards.application.card.CardActivity;
+import com.wojdor.hearthcards.domain.Card;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,11 +52,17 @@ public class ClassCardsFragment extends BaseFragment {
     }
 
     private void initComponents() {
-        classCardsAdapter = new ClassCardsAdapter(card -> {
-            //TODO: open card details on click
-        });
+        classCardsAdapter = new ClassCardsAdapter(this::openCardActivity);
         cardsRv.setLayoutManager(new GridLayoutManager(getContext(), calculateNumberOfColumns()));
         cardsRv.setAdapter(classCardsAdapter);
+    }
+
+    private void openCardActivity(View view, Card card) {
+        ImageView imageView = view.findViewById(R.id.itemCardCardIv);
+        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(getActivity(),
+                imageView, imageView.getTransitionName()).toBundle();
+        Intent intent = new Intent(getContext(), CardActivity.class);
+        startActivity(intent, bundle);
     }
 
     private int calculateNumberOfColumns() {

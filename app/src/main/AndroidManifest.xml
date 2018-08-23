@@ -27,6 +27,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".application.card.CardActivity" />
+
         <service
             android:name=".application.update.UpdateIntentService"
             android:exported="false" />

@@ -31,6 +31,6 @@ class ClassCardViewHolder extends RecyclerView.ViewHolder {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(cardIv);
         cardIv.setContentDescription(card.getName());
-        view.setOnClickListener(view -> onItemClickListener.onItemClick(card));
+        view.setOnClickListener(clickedView -> onItemClickListener.onItemClick(clickedView, card));
     }
 }

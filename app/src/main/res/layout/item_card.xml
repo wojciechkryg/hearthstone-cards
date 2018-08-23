@@ -3,7 +3,8 @@
     android:id="@+id/itemCardCardIv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/item_card_iv_content_description"
-    android:scaleType="fitCenter"
     android:adjustViewBounds="true"
-    android:src="@drawable/ic_card" />
+    android:contentDescription="@string/card_iv_content_description"
+    android:scaleType="fitCenter"
+    android:src="@drawable/ic_card"
+    android:transitionName="@string/card_transition" />
