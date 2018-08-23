@@ -4,11 +4,11 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import com.wojdor.hearthcards.data.session.UserSession;
 import com.wojdor.hearthcards.data.database.CardDatabase;
 import com.wojdor.hearthcards.data.database.dao.CardDao;
 import com.wojdor.hearthcards.data.service.CardApi;
 import com.wojdor.hearthcards.data.service.CardService;
+import com.wojdor.hearthcards.data.session.UserSession;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -25,5 +25,11 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
         disposable = new CompositeDisposable();
         cardDao = CardDatabase.getInstance(application).cardDao();
         userSession = UserSession.getInstance(application);
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposable.clear();
     }
 }

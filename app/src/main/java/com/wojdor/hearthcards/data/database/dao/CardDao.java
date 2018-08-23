@@ -5,7 +5,6 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
 import com.wojdor.hearthcards.domain.Card;
 
@@ -20,9 +19,6 @@ public interface CardDao {
     @Query("SELECT * FROM card WHERE className = :className")
     LiveData<List<Card>> getCardsFromClass(String className);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCards(List<Card> cards);
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    void updateCard(Card card);
 }
