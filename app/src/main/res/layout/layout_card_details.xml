@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_name" />
+
+    <TextView
+        android:id="@+id/cardCardName"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Naturalize" />
+
+    <TextView
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_set" />
+
+    <TextView
+        android:id="@+id/cardCardSet"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Classic" />
+
+    <TextView
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_rarity" />
+
+    <TextView
+        android:id="@+id/cardCardRarity"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Common" />
+
+    <TextView
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_class" />
+
+    <TextView
+        android:id="@+id/cardCardClass"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Druid" />
+
+    <TextView
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_flavor" />
+
+    <TextView
+        android:id="@+id/cardCardFlavor"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Another one bites the dust." />
+
+    <TextView
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_artist" />
+
+    <TextView
+        android:id="@+id/cardCardArtist"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Leo Che" />
+</LinearLayout>

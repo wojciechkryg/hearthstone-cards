@@ -7,7 +7,24 @@
         <item name="android:windowExitTransition">@transition/exit</item>
     </style>
 
+    <style name="CardActivityTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_bg</item>
+    </style>
+
+    <style name="CardDetailLabel" parent="TextAppearance.AppCompat.Large">
+        <item name="android:color">@color/colorPrimary</item>
+        <item name="android:paddingStart">@dimen/card_card_details_label_padding_start</item>
+        <item name="android:paddingEnd">@dimen/card_card_details_label_padding_end</item>
+        <item name="android:paddingTop">@dimen/card_card_details_label_padding_top</item>
+    </style>
+
+    <style name="CardDetail" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:paddingStart">@dimen/card_card_details_padding_start</item>
+        <item name="android:paddingEnd">@dimen/card_card_details_padding_end</item>
+        <item name="android:paddingBottom">@dimen/card_card_details_padding_bottom</item>
     </style>
 </resources>

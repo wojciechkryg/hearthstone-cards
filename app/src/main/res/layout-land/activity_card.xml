@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,28 +19,29 @@
             app:title="@string/app_name" />
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/cardCardIv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/card_iv_content_description"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_card"
+            android:transitionName="@string/card_transition" />
 
-            <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/cardCardIv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/card_iv_content_description"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_card"
-                android:transitionName="@string/card_transition" />
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include layout="@layout/layout_card_details" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

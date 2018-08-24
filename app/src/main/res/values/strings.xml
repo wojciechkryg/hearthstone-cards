@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">HearthCards</string>
 
+    <string name="card_name">Name</string>
+    <string name="card_set">Set</string>
+    <string name="card_type">Type</string>
+    <string name="card_rarity">Rarity</string>
+    <string name="card_class">Class</string>
+    <string name="card_flavor">Flavor</string>
+    <string name="card_artist">Artist</string>
+
     <string name="card_iv_content_description">Card name</string>
     <string name="card_transition">Card transition</string>
 </resources>
