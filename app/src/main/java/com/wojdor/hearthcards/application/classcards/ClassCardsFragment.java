@@ -62,6 +62,7 @@ public class ClassCardsFragment extends BaseFragment {
         Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(getActivity(),
                 imageView, imageView.getTransitionName()).toBundle();
         Intent intent = new Intent(getContext(), CardActivity.class);
+        intent.putExtra(CardActivity.CARD_ID_EXTRA, card.getCardId());
         startActivity(intent, bundle);
     }
 
