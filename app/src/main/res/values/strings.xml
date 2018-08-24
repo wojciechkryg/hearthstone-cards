@@ -9,7 +9,7 @@
     <string name="card_flavor">Flavor</string>
     <string name="card_artist">Artist</string>
 
-    <string name="text_copied">Copied</string>
+    <string name="text_copied">Copied to clipboard</string>
     <string name="card_iv_content_description">Card name</string>
     <string name="card_transition">Card transition</string>
 </resources>
