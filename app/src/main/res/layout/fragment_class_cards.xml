@@ -10,6 +10,8 @@
         android:id="@+id/classCardsCardsRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/class_cards_cards_rv_padding_bottom"
         android:scrollbars="vertical"
         tools:layoutManager="android.support.v7.widget.GridLayoutManager"
         tools:listitem="@layout/item_card"
