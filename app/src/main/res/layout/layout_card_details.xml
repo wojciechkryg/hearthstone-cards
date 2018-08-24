@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/cardCardNameLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
         tools:text="Naturalize" />
 
     <TextView
+        android:id="@+id/cardCardSetLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +34,7 @@
         tools:text="Classic" />
 
     <TextView
+        android:id="@+id/cardCardRarityLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,6 +48,7 @@
         tools:text="Common" />
 
     <TextView
+        android:id="@+id/cardCardClassLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +62,7 @@
         tools:text="Druid" />
 
     <TextView
+        android:id="@+id/cardCardFlavorLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,6 +76,7 @@
         tools:text="Another one bites the dust." />
 
     <TextView
+        android:id="@+id/cardCardArtistLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

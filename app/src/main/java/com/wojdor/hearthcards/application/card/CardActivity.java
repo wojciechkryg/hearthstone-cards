@@ -13,6 +13,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseActivity;
+import com.wojdor.hearthcards.application.util.Copy;
+import com.wojdor.hearthcards.domain.Card;
 
 import java.io.File;
 
@@ -27,16 +29,28 @@ public class CardActivity extends BaseActivity {
     Toolbar cardToolbar;
     @BindView(R.id.cardCardIv)
     ImageView cardCardIv;
+    @BindView(R.id.cardCardNameLabel)
+    TextView cardCardNameLabel;
     @BindView(R.id.cardCardName)
     TextView cardCardName;
+    @BindView(R.id.cardCardSetLabel)
+    TextView cardCardSetLabel;
     @BindView(R.id.cardCardSet)
     TextView cardCardSet;
+    @BindView(R.id.cardCardRarityLabel)
+    TextView cardCardRarityLabel;
     @BindView(R.id.cardCardRarity)
     TextView cardCardRarity;
+    @BindView(R.id.cardCardClassLabel)
+    TextView cardCardClassLabel;
     @BindView(R.id.cardCardClass)
     TextView cardCardClass;
+    @BindView(R.id.cardCardFlavorLabel)
+    TextView cardCardFlavorLabel;
     @BindView(R.id.cardCardFlavor)
     TextView cardCardFlavor;
+    @BindView(R.id.cardCardArtistLabel)
+    TextView cardCardArtistLabel;
     @BindView(R.id.cardCardArtist)
     TextView cardCardArtist;
 
@@ -53,7 +67,7 @@ public class CardActivity extends BaseActivity {
 
     private void initComponents() {
         initToolbar();
-        initCardDetails();
+        initDetails();
     }
 
     private void initToolbar() {
@@ -61,17 +75,38 @@ public class CardActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void initCardDetails() {
+    private void initDetails() {
         String cardId = getIntent().getStringExtra(CARD_ID_EXTRA);
         viewModel.getCardImage(cardId).observe(this, this::loadCardImage);
         viewModel.getCardByCardId(cardId).observe(this, card -> {
-            cardCardName.setText(card.getName());
-            cardCardSet.setText(card.getSet());
-            cardCardRarity.setText(card.getRarity());
-            cardCardClass.setText(card.getClassName());
-            cardCardFlavor.setText(Html.fromHtml(card.getFlavorText()));
-            cardCardArtist.setText(card.getArtist());
+            initCardDetails(card);
+            initCopy(card);
         });
+    }
+
+    private void initCardDetails(Card card) {
+        cardCardName.setText(card.getName());
+        cardCardSet.setText(card.getSet());
+        cardCardRarity.setText(card.getRarity());
+        cardCardClass.setText(card.getClassName());
+        cardCardFlavor.setText(Html.fromHtml(card.getFlavorText()));
+        cardCardArtist.setText(card.getArtist());
+    }
+
+    private void initCopy(Card card) {
+        Copy copy = new Copy();
+        copy.applyOnLongClick(cardCardNameLabel, card.getName());
+        copy.applyOnLongClick(cardCardName, card.getName());
+        copy.applyOnLongClick(cardCardSetLabel, card.getSet());
+        copy.applyOnLongClick(cardCardSet, card.getSet());
+        copy.applyOnLongClick(cardCardRarityLabel, card.getRarity());
+        copy.applyOnLongClick(cardCardRarity, card.getRarity());
+        copy.applyOnLongClick(cardCardClassLabel, card.getClassName());
+        copy.applyOnLongClick(cardCardClass, card.getClassName());
+        copy.applyOnLongClick(cardCardFlavorLabel, card.getFlavorText());
+        copy.applyOnLongClick(cardCardFlavor, card.getFlavorText());
+        copy.applyOnLongClick(cardCardArtistLabel, card.getArtist());
+        copy.applyOnLongClick(cardCardArtist, card.getArtist());
     }
 
     private void loadCardImage(File file) {
