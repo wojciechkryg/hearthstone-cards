@@ -14,7 +14,8 @@ public class Copy {
         view.setOnLongClickListener(clickedView -> {
             Context context = clickedView.getContext();
             ClipboardManager cManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData cData = ClipData.newPlainText(text, text);
+            String editedText = new HtmlParser().asString(text);
+            ClipData cData = ClipData.newPlainText(editedText, editedText);
             cManager.setPrimaryClip(cData);
             Toast.makeText(context, context.getString(R.string.text_copied), Toast.LENGTH_SHORT).show();
             return true;
