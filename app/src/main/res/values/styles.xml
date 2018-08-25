@@ -8,7 +8,7 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
-    <style name="CardActivityTheme" parent="AppTheme">
+    <style name="ExitTransitionTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
     </style>
 

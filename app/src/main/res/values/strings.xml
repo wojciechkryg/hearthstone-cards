@@ -10,5 +10,6 @@
     <string name="text_copied">Copied to clipboard</string>
     <string name="card_iv_content_description">Card name</string>
 
+    <string name="settings">Settings</string>
     <string name="menu_class_pager_settings">Settings</string>
 </resources>

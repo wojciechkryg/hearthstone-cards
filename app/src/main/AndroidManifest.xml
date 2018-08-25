@@ -29,9 +29,11 @@
 
         <activity
             android:name=".application.card.CardActivity"
-            android:theme="@style/CardActivityTheme" />
+            android:theme="@style/ExitTransitionTheme" />
 
-        <activity android:name=".application.settings.SettingsActivity" />
+        <activity
+            android:name=".application.settings.SettingsActivity"
+            android:theme="@style/ExitTransitionTheme" />
 
         <service
             android:name=".application.update.UpdateIntentService"
