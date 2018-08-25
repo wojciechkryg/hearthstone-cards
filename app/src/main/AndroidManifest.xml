@@ -31,6 +31,8 @@
             android:name=".application.card.CardActivity"
             android:theme="@style/CardActivityTheme" />
 
+        <activity android:name=".application.settings.SettingsActivity" />
+
         <service
             android:name=".application.update.UpdateIntentService"
             android:exported="false" />
@@ -42,7 +44,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/flavor_widget_info" />
+                android:resource="@xml/widget_flavor_info" />
         </receiver>
     </application>
 </manifest>

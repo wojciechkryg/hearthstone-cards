@@ -5,6 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowExitTransition">@transition/exit</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
     <style name="CardActivityTheme" parent="AppTheme">
@@ -16,7 +17,7 @@
     </style>
 
     <style name="CardDetailLabel" parent="TextAppearance.AppCompat.Large">
-        <item name="android:color">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:paddingStart">@dimen/card_card_details_label_padding_start</item>
         <item name="android:paddingEnd">@dimen/card_card_details_label_padding_end</item>
         <item name="android:paddingTop">@dimen/card_card_details_label_padding_top</item>

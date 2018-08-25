@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">HearthCards</string>
-
     <string name="card_name">Name</string>
     <string name="card_set">Set</string>
     <string name="card_type">Type</string>
@@ -11,5 +9,6 @@
 
     <string name="text_copied">Copied to clipboard</string>
     <string name="card_iv_content_description">Card name</string>
-    <string name="card_transition">Card transition</string>
+
+    <string name="menu_class_pager_settings">Settings</string>
 </resources>
