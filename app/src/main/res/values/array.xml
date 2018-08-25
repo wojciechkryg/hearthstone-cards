@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="locales">
+        <item>German</item>
+        <item>English (United Kingdom)</item>
+        <item>English (United States)</item>
+        <item>Spanish (Spain)</item>
+        <item>Spanish (Mexico)</item>
+        <item>French</item>
+        <item>Italian</item>
+        <item>Korean</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+        <item>Chinese (Simplified)</item>
+        <item>Chinese (Traditional)</item>
+        <item>Japanese</item>
+        <item>Thai</item>
+    </string-array>
+
+    <string-array name="localeValues">
+        <item>deDE</item>
+        <item>enGB</item>
+        <item>enUS</item>
+        <item>esES</item>
+        <item>esMX</item>
+        <item>frFR</item>
+        <item>itIT</item>
+        <item>koKR</item>
+        <item>plPL</item>
+        <item>ptBR</item>
+        <item>ruRU</item>
+        <item>zhCN</item>
+        <item>zhTW</item>
+        <item>jaJP</item>
+        <item>thTH</item>
+    </string-array>
+</resources>

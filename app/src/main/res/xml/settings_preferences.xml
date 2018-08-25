@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/settings_activity_general_header">
+
+        <com.wojdor.hearthcards.application.view.SummaryValueListPreference
+            android:entries="@array/locales"
+            android:entryValues="@array/localeValues"
+            android:key="@string/settings_preferences_locale_key"
+            android:title="@string/settings_activity_language" />
+    </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>

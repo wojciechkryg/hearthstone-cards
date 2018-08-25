@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HearthCards</string>
-    <string name="card_transition">Card transition</string>
+
+    <string name="card_transition">CARD_TRANSITION</string>
+
+    <string name="settings_preferences_locale_key">LOCALE_KEY</string>
 </resources>
