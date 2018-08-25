@@ -9,6 +9,7 @@ public class HtmlParser {
     private static final String ENTER_HTML = "<br>";
 
     public Spanned asHtml(String text) {
+        if (text == null) return Html.fromHtml("");
         String editedText = text.replace(ENTER, ENTER_HTML);
         return Html.fromHtml(editedText);
     }
