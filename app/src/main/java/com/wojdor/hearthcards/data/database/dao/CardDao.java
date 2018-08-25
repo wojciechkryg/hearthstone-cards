@@ -19,6 +19,9 @@ public interface CardDao {
     @Query("SELECT * FROM card WHERE cardId = :cardId")
     LiveData<Card> getCardByCardId(String cardId);
 
+    @Query("SELECT * FROM card")
+    List<Card> getAllCards();
+
     @Query("SELECT COUNT(*) FROM card WHERE className = :className")
     int getAmountOfCardsFromClass(String className);
 

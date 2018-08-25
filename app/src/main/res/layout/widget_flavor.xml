@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_flavor_container_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_black"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/widget_flavor_flavor_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        tools:text="Another one bites the dust." />
+</RelativeLayout>

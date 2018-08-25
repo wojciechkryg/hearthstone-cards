@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseActivity;
 import com.wojdor.hearthcards.application.util.Copy;
+import com.wojdor.hearthcards.application.util.HtmlParser;
 import com.wojdor.hearthcards.domain.Card;
 
 import java.io.File;
@@ -89,7 +89,7 @@ public class CardActivity extends BaseActivity {
         cardCardSet.setText(card.getSet());
         cardCardRarity.setText(card.getRarity());
         cardCardClass.setText(card.getClassName());
-        cardCardFlavor.setText(Html.fromHtml(card.getFlavorText()));
+        cardCardFlavor.setText(new HtmlParser().asHtml((card.getFlavorText())));
         cardCardArtist.setText(card.getArtist());
     }
 

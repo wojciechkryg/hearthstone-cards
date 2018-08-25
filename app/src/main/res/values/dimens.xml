@@ -7,4 +7,7 @@
     <dimen name="card_card_details_padding_start">16dp</dimen>
     <dimen name="card_card_details_padding_end">16dp</dimen>
     <dimen name="card_card_details_padding_bottom">16dp</dimen>
+
+    <dimen name="widget_flavor_min_height">40dp</dimen>
+    <dimen name="widget_flavor_min_width">250dp</dimen>
 </resources>
