@@ -95,18 +95,24 @@ public class CardActivity extends BaseActivity {
 
     private void initCopy(Card card) {
         Copy copy = new Copy();
-        copy.applyOnLongClick(cardCardNameLabel, card.getName());
-        copy.applyOnLongClick(cardCardName, card.getName());
-        copy.applyOnLongClick(cardCardSetLabel, card.getSet());
-        copy.applyOnLongClick(cardCardSet, card.getSet());
-        copy.applyOnLongClick(cardCardRarityLabel, card.getRarity());
-        copy.applyOnLongClick(cardCardRarity, card.getRarity());
-        copy.applyOnLongClick(cardCardClassLabel, card.getClassName());
-        copy.applyOnLongClick(cardCardClass, card.getClassName());
-        copy.applyOnLongClick(cardCardFlavorLabel, card.getFlavorText());
-        copy.applyOnLongClick(cardCardFlavor, card.getFlavorText());
-        copy.applyOnLongClick(cardCardArtistLabel, card.getArtist());
-        copy.applyOnLongClick(cardCardArtist, card.getArtist());
+        String name = getString(R.string.card_name);
+        String set = getString(R.string.card_set);
+        String rarity = getString(R.string.card_rarity);
+        String className = getString(R.string.card_class);
+        String flavor = getString(R.string.card_flavor);
+        String artist = getString(R.string.card_artist);
+        copy.applyOnLongClick(cardCardNameLabel, name, card.getName());
+        copy.applyOnLongClick(cardCardName, name, card.getName());
+        copy.applyOnLongClick(cardCardSetLabel, set, card.getSet());
+        copy.applyOnLongClick(cardCardSet, set, card.getSet());
+        copy.applyOnLongClick(cardCardRarityLabel, rarity, card.getRarity());
+        copy.applyOnLongClick(cardCardRarity, rarity, card.getRarity());
+        copy.applyOnLongClick(cardCardClassLabel, className, card.getClassName());
+        copy.applyOnLongClick(cardCardClass, className, card.getClassName());
+        copy.applyOnLongClick(cardCardFlavorLabel, flavor, card.getFlavorText());
+        copy.applyOnLongClick(cardCardFlavor, flavor, card.getFlavorText());
+        copy.applyOnLongClick(cardCardArtistLabel, artist, card.getArtist());
+        copy.applyOnLongClick(cardCardArtist, artist, card.getArtist());
     }
 
     private void loadCardImage(File file) {
