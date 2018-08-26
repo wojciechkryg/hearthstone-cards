@@ -20,6 +20,20 @@
         tools:text="Naturalize" />
 
     <TextView
+        android:id="@+id/cardCardEffectLabel"
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_effect" />
+
+    <TextView
+        android:id="@+id/cardCardEffect"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Zniszcz stronnika. Przeciwnik dobiera\n2 karty." />
+
+    <TextView
         android:id="@+id/cardCardSetLabel"
         style="@style/CardDetailLabel"
         android:layout_width="match_parent"

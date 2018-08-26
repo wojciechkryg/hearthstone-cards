@@ -1,9 +1,10 @@
 <resources>
     <string name="no_internet">No internet connection to download data</string>
     <string name="check_update_info">Checking update…</string>
-    <string name="download_data_info">Downloading a lot of cards, please be patient…</string>
+    <string name="download_data_info">Downloading cards, please be patient.\nIt will take several minutes…</string>
 
     <string name="card_name">Name</string>
+    <string name="card_effect">Effect</string>
     <string name="card_set">Set</string>
     <string name="card_type">Type</string>
     <string name="card_rarity">Rarity</string>

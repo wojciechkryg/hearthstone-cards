@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.util.FileStorage;
@@ -26,7 +27,11 @@ class ClassCardViewHolder extends RecyclerView.ViewHolder {
     public void bind(Card card, ClassCardsAdapter.OnItemClickListener onItemClickListener) {
         Glide.with(cardIv.getContext())
                 .load(fileStorage.get(card.getCardId()))
-                .apply(new RequestOptions().placeholder(R.drawable.ic_card).error(R.drawable.ic_card))
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.ic_card)
+                        .error(R.drawable.ic_card)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true))
                 .into(cardIv);
         cardIv.setContentDescription(card.getName());
         view.setOnClickListener(clickedView -> onItemClickListener.onItemClick(clickedView, card));
