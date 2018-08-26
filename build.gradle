@@ -24,6 +24,7 @@ buildscript {
         timber_version = '4.7.1'
         retrofit_version = '2.4.0'
         glide_version = '4.7.1'
+        lottie_version = '2.5.0'
         junit_version = '4.12'
         runner_version = '1.0.2'
         espresso_version = '3.0.2'

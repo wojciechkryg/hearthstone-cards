@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="widget_flavor_update_time">86400000</integer>
+    <item name="splash_loading_vertical_bias" format="float" type="dimen">0.8</item>
 </resources>

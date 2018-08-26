@@ -4,8 +4,10 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseActivity;
 import com.wojdor.hearthcards.application.classpager.ClassPagerActivity;
@@ -17,7 +19,15 @@ import com.wojdor.hearthcards.domain.VersionInfo;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SplashActivity extends BaseActivity implements UpdateResultReceiver.Receiver {
+
+    @BindView(R.id.splashLoadingAv)
+    LottieAnimationView splashLoadingAv;
+    @BindView(R.id.splashLoadingInfoTv)
+    TextView splashLoadingInfoTv;
 
     private SplashViewModel viewModel;
     private UpdateResultReceiver updateResultReceiver;
@@ -25,8 +35,11 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+        ButterKnife.bind(this);
         viewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
         updateResultReceiver = new UpdateResultReceiver(new Handler());
+        splashLoadingAv.playAnimation();
         setupLocale();
         checkUpdate();
     }
@@ -53,6 +66,7 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
     }
 
     private void checkUpdate() {
+        splashLoadingInfoTv.setText(R.string.check_update_info);
         viewModel.getRemoteVersionInfo().observe(this, remoteVersionInfo ->
                 viewModel.getLocalVersionInfo().observe(this, localVersionInfo ->
                         checkVersions(remoteVersionInfo, localVersionInfo)));
@@ -78,6 +92,7 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
     }
 
     private void startUpdate(VersionInfo remoteVersionInfo) {
+        splashLoadingInfoTv.setText(R.string.download_data_info);
         UpdateIntentService.update(this, remoteVersionInfo, updateResultReceiver);
     }
 
