@@ -25,7 +25,7 @@ public class SplashViewModel extends BaseAndroidViewModel {
 
     public LiveData<VersionInfo> getRemoteVersionInfo() {
         MutableLiveData<VersionInfo> data = new MutableLiveData<>();
-        disposable.add(cardApi.getVersionInfo()
+        disposable.add(cardApi.getVersionInfo(userSession.getLocale())
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .subscribe(versionInfoModel -> data.postValue(VersionInfoMapper.map(versionInfoModel)),

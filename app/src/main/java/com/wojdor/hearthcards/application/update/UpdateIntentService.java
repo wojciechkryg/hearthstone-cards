@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.os.ResultReceiver;
 
-import com.wojdor.hearthcards.application.util.ImageDownloader;
+import com.wojdor.hearthcards.application.util.CardImageDownloader;
 import com.wojdor.hearthcards.data.database.CardDatabase;
 import com.wojdor.hearthcards.data.database.dao.CardDao;
 import com.wojdor.hearthcards.data.service.CardApi;
@@ -33,14 +33,14 @@ public class UpdateIntentService extends IntentService {
     private CardApi cardApi;
     private CardDao cardDao;
     private UserSession userSession;
-    private ImageDownloader imageDownloader;
+    private CardImageDownloader cardImageDownloader;
 
     public UpdateIntentService() {
         super(UpdateIntentService.class.getSimpleName());
         cardApi = CardService.getInstance();
         cardDao = CardDatabase.getInstance(this).cardDao();
         userSession = UserSession.getInstance(this);
-        imageDownloader = new ImageDownloader(this);
+        cardImageDownloader = new CardImageDownloader(this);
     }
 
     public static void update(Context context, VersionInfo versionInfo, UpdateResultReceiver updateResultReceiver) {
@@ -54,9 +54,10 @@ public class UpdateIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         VersionInfo versionInfo = intent.getExtras().getParcelable(VERSION_INFO_EXTRA);
         ResultReceiver updateResultReceiver = intent.getExtras().getParcelable(UPDATE_RESULT_RECEIVER_EXTRA);
+        String locale = userSession.getLocale();
         List<Single<List<CardModel>>> apiCalls = new ArrayList<>();
         for (String className : versionInfo.getClassNames()) {
-            apiCalls.add(downloadDataForClass(className));
+            apiCalls.add(downloadDataForClass(className, locale));
         }
         makeAllApiCalls(apiCalls, versionInfo, updateResultReceiver);
     }
@@ -69,15 +70,16 @@ public class UpdateIntentService extends IntentService {
                         error -> onError(updateResultReceiver));
     }
 
-    private Single downloadDataForClass(String className) {
-        return cardApi.getCollectibleCardsForClass(className)
+    private Single downloadDataForClass(String className, String locale) {
+        return cardApi.getCollectibleCardsForClass(className, locale)
                 .onErrorReturnItem(Collections.emptyList());
     }
 
     @SuppressLint("RestrictedApi")
     private void onSuccess(List<CardModel> cardModels, VersionInfo versionInfo, ResultReceiver updateResultReceiver) {
+        String locale = userSession.getLocale();
         for (CardModel cardModel : cardModels) {
-            imageDownloader.getImage(cardModel.getCardId(), cardModel.getImg());
+            cardImageDownloader.getImage(cardModel.getCardId(), locale);
         }
         List<Card> cards = CardMapper.map(cardModels);
         cardDao.insertCards(cards);

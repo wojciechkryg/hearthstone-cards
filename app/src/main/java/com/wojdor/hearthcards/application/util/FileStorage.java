@@ -21,7 +21,7 @@ public class FileStorage {
         FileOutputStream outputStream;
         try {
             outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 50, outputStream);
             outputStream.close();
         } catch (Exception error) {
             Timber.e(error);
