@@ -8,8 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseActivity;
 import com.wojdor.hearthcards.application.util.Copy;
@@ -118,8 +116,6 @@ public class CardActivity extends BaseActivity {
     private void loadCardImage(File file) {
         Glide.with(this)
                 .load(file)
-                .apply(new RequestOptions().placeholder(R.drawable.ic_card).error(R.drawable.ic_card))
-                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(cardCardIv);
     }
 
