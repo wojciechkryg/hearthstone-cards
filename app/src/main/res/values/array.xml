@@ -2,8 +2,7 @@
 <resources>
     <string-array name="locales">
         <item>German</item>
-        <item>English (United Kingdom)</item>
-        <item>English (United States)</item>
+        <item>English</item>
         <item>Spanish (Spain)</item>
         <item>Spanish (Mexico)</item>
         <item>French</item>
@@ -20,7 +19,6 @@
 
     <string-array name="localeValues">
         <item>deDE</item>
-        <item>enGB</item>
         <item>enUS</item>
         <item>esES</item>
         <item>esMX</item>

@@ -25,7 +25,7 @@ public class SplashViewModel extends BaseAndroidViewModel {
 
     public LiveData<VersionInfo> getRemoteVersionInfo() {
         MutableLiveData<VersionInfo> data = new MutableLiveData<>();
-        disposable.add(cardApi.getVersionInfo(userSession.getLocale())
+        disposable.add(cardApi.getVersionInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .subscribe(versionInfoModel -> data.postValue(VersionInfoMapper.map(versionInfoModel)),
@@ -41,5 +41,15 @@ public class SplashViewModel extends BaseAndroidViewModel {
 
     public void setLocale(String locale) {
         userSession.setLocale(locale);
+    }
+
+    public LiveData<Boolean> wasLanguageChanged() {
+        MutableLiveData<Boolean> data = new MutableLiveData<>();
+        data.setValue(userSession.wasLanguageChanged());
+        return data;
+    }
+
+    public void wasLanguageChanged(boolean wasLanguageChanged) {
+        userSession.wasLanguageChanged(wasLanguageChanged);
     }
 }

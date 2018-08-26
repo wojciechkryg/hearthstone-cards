@@ -11,6 +11,7 @@ import com.wojdor.hearthcards.domain.VersionInfo;
 public final class UserSession {
 
     private static final String VERSION_INFO_KEY = "VERSION_INFO_KEY";
+    private static final String WAS_LANGUAGE_CHANGED_KEY = "WAS_LANGUAGE_CHANGED_KEY";
 
     private static UserSession instance;
 
@@ -48,5 +49,13 @@ public final class UserSession {
 
     public void setLocale(String locale) {
         sharedPreferences.edit().putString(localeKey, locale).apply();
+    }
+
+    public boolean wasLanguageChanged() {
+        return sharedPreferences.getBoolean(WAS_LANGUAGE_CHANGED_KEY, false);
+    }
+
+    public void wasLanguageChanged(boolean wasChangedLanguage) {
+        sharedPreferences.edit().putBoolean(WAS_LANGUAGE_CHANGED_KEY, wasChangedLanguage).apply();
     }
 }

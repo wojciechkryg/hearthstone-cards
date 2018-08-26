@@ -21,6 +21,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class SplashActivity extends BaseActivity implements UpdateResultReceiver.Receiver {
 
@@ -69,13 +70,17 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
         splashLoadingInfoTv.setText(R.string.check_update_info);
         viewModel.getRemoteVersionInfo().observe(this, remoteVersionInfo ->
                 viewModel.getLocalVersionInfo().observe(this, localVersionInfo ->
-                        checkVersions(remoteVersionInfo, localVersionInfo)));
+                        viewModel.wasLanguageChanged().observe(this, wasLanguageChanged ->
+                                checkVersions(remoteVersionInfo, localVersionInfo, wasLanguageChanged))));
     }
 
-    private void checkVersions(VersionInfo remoteVersionInfo, VersionInfo localVersionInfo) {
+    private void checkVersions(VersionInfo remoteVersionInfo, VersionInfo localVersionInfo,
+                               Boolean wasLanguageChanged) {
         if (remoteVersionInfo == null && localVersionInfo == null) {
             showError();
-        } else if (localVersionInfo == null || isNewVersionOnRemote(remoteVersionInfo, localVersionInfo)) {
+        } else if (localVersionInfo == null
+                || isNewVersionOnRemote(remoteVersionInfo, localVersionInfo)
+                || wasLanguageChanged(remoteVersionInfo, wasLanguageChanged)) {
             startUpdate(remoteVersionInfo);
         } else {
             launchClassPagerActivity();
@@ -91,7 +96,12 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
         return remoteVersionInfo != null && localVersionInfo.notEquals(remoteVersionInfo);
     }
 
+    private boolean wasLanguageChanged(VersionInfo remoteVersionInfo, Boolean wasLanguageChanged) {
+        return remoteVersionInfo != null && wasLanguageChanged;
+    }
+
     private void startUpdate(VersionInfo remoteVersionInfo) {
+        Timber.d("DOWNLOADING...");
         splashLoadingInfoTv.setText(R.string.download_data_info);
         UpdateIntentService.update(this, remoteVersionInfo, updateResultReceiver);
     }
@@ -110,7 +120,9 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
 
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
+        Timber.d("DOWNLOADED!");
         if (resultCode == UpdateResultReceiver.RESULT_SUCCESS) {
+            viewModel.wasLanguageChanged(false);
             launchClassPagerActivity();
         } else {
             showError();

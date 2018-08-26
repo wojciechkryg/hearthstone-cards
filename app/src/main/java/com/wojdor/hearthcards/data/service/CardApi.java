@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 public interface CardApi {
 
     @GET("info")
-    Single<VersionInfoModel> getVersionInfo(@Query("locale") String locale);
+    Single<VersionInfoModel> getVersionInfo();
 
     @GET("cards/classes/{class}?collectible=1")
     Single<List<CardModel>> getCollectibleCardsForClass(@Path("class") String className,
