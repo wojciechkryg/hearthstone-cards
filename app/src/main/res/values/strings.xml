@@ -1,4 +1,6 @@
 <resources>
+    <string name="no_internet">No internet connection to download data</string>
+
     <string name="card_name">Name</string>
     <string name="card_set">Set</string>
     <string name="card_type">Type</string>

@@ -4,7 +4,9 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
 
+import com.wojdor.hearthcards.R;
 import com.wojdor.hearthcards.application.base.BaseActivity;
 import com.wojdor.hearthcards.application.classpager.ClassPagerActivity;
 import com.wojdor.hearthcards.application.update.UpdateIntentService;
@@ -41,7 +43,7 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
     }
 
     private void showError() {
-        // TODO: Show error dialog
+        Toast.makeText(this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
         finish();
     }
 
