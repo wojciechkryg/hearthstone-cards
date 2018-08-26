@@ -5,4 +5,5 @@
     <string name="card_transition">CARD_TRANSITION</string>
 
     <string name="settings_preferences_locale_key">LOCALE_KEY</string>
+    <string name="settings_preferences_default_locale">enUS</string>
 </resources>

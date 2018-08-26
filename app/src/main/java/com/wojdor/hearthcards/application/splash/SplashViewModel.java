@@ -32,4 +32,14 @@ public class SplashViewModel extends BaseAndroidViewModel {
                         error -> data.postValue(null)));
         return data;
     }
+
+    public LiveData<String> getLocale() {
+        MutableLiveData<String> data = new MutableLiveData<>();
+        data.setValue(userSession.getLocale());
+        return data;
+    }
+
+    public void setLocale(String locale) {
+        userSession.setLocale(locale);
+    }
 }

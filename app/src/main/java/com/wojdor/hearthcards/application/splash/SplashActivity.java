@@ -11,7 +11,11 @@ import com.wojdor.hearthcards.application.base.BaseActivity;
 import com.wojdor.hearthcards.application.classpager.ClassPagerActivity;
 import com.wojdor.hearthcards.application.update.UpdateIntentService;
 import com.wojdor.hearthcards.application.update.UpdateResultReceiver;
+import com.wojdor.hearthcards.application.util.Language;
 import com.wojdor.hearthcards.domain.VersionInfo;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SplashActivity extends BaseActivity implements UpdateResultReceiver.Receiver {
 
@@ -23,7 +27,29 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
         updateResultReceiver = new UpdateResultReceiver(new Handler());
+        setupLocale();
         checkUpdate();
+    }
+
+    private void setupLocale() {
+        viewModel.getLocale().observe(this, this::checkLocale);
+    }
+
+    private void checkLocale(String locale) {
+        if (locale == null) {
+            setupDefaultLocale();
+        }
+    }
+
+    private void setupDefaultLocale() {
+        String currentLanguage = new Language().getCurrentLanguage();
+        String[] supportedLanguages = getResources().getStringArray(R.array.localeValues);
+        List<String> supportedLanguagesList = Arrays.asList(supportedLanguages);
+        if (supportedLanguagesList.contains(currentLanguage)) {
+            viewModel.setLocale(currentLanguage);
+        } else {
+            viewModel.setLocale(getString(R.string.settings_preferences_default_locale));
+        }
     }
 
     private void checkUpdate() {
