@@ -6,6 +6,8 @@ import android.text.Spanned;
 public class HtmlParser {
 
     private static final String EMPTY = "";
+    private static final String SPACE = " ";
+    private static final String UNDERLINE = "_";
     private static final String ENTER = "\n";
     private static final String ENTER_SIGN = "\\n";
     private static final String ENTER_HTML = "<br>";
@@ -13,12 +15,18 @@ public class HtmlParser {
 
     public Spanned asHtml(String text) {
         if (text == null) return Html.fromHtml(EMPTY);
-        String editedText = text.replace(ENTER_SIGN, ENTER_HTML).replace(DOLLAR_SIGN, EMPTY);
+        String editedText = text
+                .replace(ENTER_SIGN, ENTER_HTML)
+                .replace(DOLLAR_SIGN, EMPTY)
+                .replace(UNDERLINE, SPACE);
         return Html.fromHtml(editedText);
     }
 
     public String asString(String text) {
         if (text == null) return EMPTY;
-        return Html.fromHtml(text).toString().replace(ENTER_SIGN, ENTER).replace(DOLLAR_SIGN, EMPTY);
+        return Html.fromHtml(text).toString()
+                .replace(ENTER_SIGN, ENTER)
+                .replace(DOLLAR_SIGN, EMPTY)
+                .replace(UNDERLINE, SPACE);
     }
 }
