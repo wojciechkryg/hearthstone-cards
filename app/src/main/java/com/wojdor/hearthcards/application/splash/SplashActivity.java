@@ -21,7 +21,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public class SplashActivity extends BaseActivity implements UpdateResultReceiver.Receiver {
 
@@ -76,9 +75,10 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
 
     private void checkVersions(VersionInfo remoteVersionInfo, VersionInfo localVersionInfo,
                                Boolean wasLanguageChanged) {
-        if (remoteVersionInfo == null && localVersionInfo == null) {
-            showError();
-        } else if (localVersionInfo == null
+        if (isWrongData(remoteVersionInfo, localVersionInfo)
+                || wasLanguageChangedWithoutInternet(remoteVersionInfo, wasLanguageChanged)) {
+            closeAppWithError();
+        } else if (isFirstLaunch(localVersionInfo, remoteVersionInfo)
                 || isNewVersionOnRemote(remoteVersionInfo, localVersionInfo)
                 || wasLanguageChanged(remoteVersionInfo, wasLanguageChanged)) {
             startUpdate(remoteVersionInfo);
@@ -87,7 +87,15 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
         }
     }
 
-    private void showError() {
+    private boolean isFirstLaunch(VersionInfo localVersionInfo, VersionInfo remoteVersionInfo) {
+        return localVersionInfo == null && remoteVersionInfo != null;
+    }
+
+    private boolean isWrongData(VersionInfo remoteVersionInfo, VersionInfo localVersionInfo) {
+        return remoteVersionInfo == null && localVersionInfo == null;
+    }
+
+    private void closeAppWithError() {
         Toast.makeText(this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -96,12 +104,15 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
         return remoteVersionInfo != null && localVersionInfo.notEquals(remoteVersionInfo);
     }
 
+    private boolean wasLanguageChangedWithoutInternet(VersionInfo remoteVersionInfo, Boolean wasLanguageChanged) {
+        return remoteVersionInfo == null && wasLanguageChanged;
+    }
+
     private boolean wasLanguageChanged(VersionInfo remoteVersionInfo, Boolean wasLanguageChanged) {
         return remoteVersionInfo != null && wasLanguageChanged;
     }
 
     private void startUpdate(VersionInfo remoteVersionInfo) {
-        Timber.d("DOWNLOADING...");
         splashLoadingInfoTv.setText(R.string.download_data_info);
         UpdateIntentService.update(this, remoteVersionInfo, updateResultReceiver);
     }
@@ -120,12 +131,11 @@ public class SplashActivity extends BaseActivity implements UpdateResultReceiver
 
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
-        Timber.d("DOWNLOADED!");
         if (resultCode == UpdateResultReceiver.RESULT_SUCCESS) {
             viewModel.wasLanguageChanged(false);
             launchClassPagerActivity();
         } else {
-            showError();
+            closeAppWithError();
         }
     }
 

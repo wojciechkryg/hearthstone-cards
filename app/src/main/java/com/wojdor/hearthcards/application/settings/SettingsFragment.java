@@ -23,7 +23,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         clearCache();
         UserSession.getInstance(getContext()).wasLanguageChanged(true);
         Intent intent = getContext().getPackageManager().getLaunchIntentForPackage(getContext().getPackageName());
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
