@@ -24,6 +24,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class FlavorWidget extends AppWidgetProvider {
 
+    private static final String CARD_NAME_FORMAT = "~ %s";
     private static final int WIDGET_REQUEST_CODE = 0;
     private static final int WIDGET_DEFAULT_FLAG = 0;
 
@@ -40,7 +41,7 @@ public class FlavorWidget extends AppWidgetProvider {
     private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_flavor);
         setupWidgetOnClick(context, views);
-        setupWidgetFlavor(appWidgetManager, appWidgetId, views);
+        setupWidgetLayout(appWidgetManager, appWidgetId, views);
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
@@ -53,21 +54,32 @@ public class FlavorWidget extends AppWidgetProvider {
         return PendingIntent.getActivity(context, WIDGET_REQUEST_CODE, intent, WIDGET_DEFAULT_FLAG);
     }
 
-    private void setupWidgetFlavor(AppWidgetManager appWidgetManager, int appWidgetId, RemoteViews views) {
+    private void setupWidgetLayout(AppWidgetManager appWidgetManager, int appWidgetId, RemoteViews views) {
         Single.fromCallable(() -> cardDao.getAllCards())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(cards -> {
-                    Spanned formattedFlavor = new HtmlParser().asHtml(getRandomFlavor(cards));
-                    views.setTextViewText(R.id.widget_flavor_flavor_tv, formattedFlavor);
+                    Card randomCard = getRandomCard(cards);
+                    setupCardFlavor(views, randomCard);
+                    setupCardName(views, randomCard);
                     appWidgetManager.updateAppWidget(appWidgetId, views);
                 });
     }
 
-    private String getRandomFlavor(List<Card> cards) {
+    private void setupCardName(RemoteViews views, Card randomCard) {
+        String formattedName = String.format(CARD_NAME_FORMAT, randomCard.getName());
+        views.setTextViewText(R.id.widget_flavor_card_tv, formattedName);
+    }
+
+    private void setupCardFlavor(RemoteViews views, Card randomCard) {
+        Spanned formattedFlavor = new HtmlParser().asHtml(randomCard.getFlavorText());
+        views.setTextViewText(R.id.widget_flavor_flavor_tv, formattedFlavor);
+    }
+
+    private Card getRandomCard(List<Card> cards) {
         Random random = new Random();
         int cardIndex = random.nextInt(cards.size());
-        return cards.get(cardIndex).getFlavorText();
+        return cards.get(cardIndex);
     }
 }
 

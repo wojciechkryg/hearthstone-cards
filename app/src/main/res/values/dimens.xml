@@ -13,4 +13,6 @@
 
     <dimen name="widget_flavor_min_height">40dp</dimen>
     <dimen name="widget_flavor_min_width">250dp</dimen>
+    <dimen name="widget_flavor_flavor_tv_padding">8dp</dimen>
+    <dimen name="widget_flavor_card_tv_padding">8dp</dimen>
 </resources>

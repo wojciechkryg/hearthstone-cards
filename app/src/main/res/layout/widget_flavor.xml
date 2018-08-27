@@ -13,6 +13,19 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center"
+        android:padding="@dimen/widget_flavor_card_tv_padding"
         android:textColor="@android:color/white"
         tools:text="Another one bites the dust." />
+
+    <TextView
+        android:id="@+id/widget_flavor_card_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/widget_flavor_flavor_tv"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:padding="@dimen/widget_flavor_flavor_tv_padding"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        tools:text="~ Naturalize" />
 </RelativeLayout>
