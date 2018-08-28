@@ -15,7 +15,7 @@ __________
 
 ### Screenshots
 
-<img src="/screenshots/01.png" width="280" height="591" alt="First screenshot"> <img src="/screenshots/02.png" width="280" height="591" alt="Second screenshot"> <img src="/screenshots/03.png" width="280" height="591" alt="Third screenshot">
+<img src="/screenshots/01.jpg" width="280" height="591" alt="First screenshot"> <img src="/screenshots/02.jpg" width="280" height="591" alt="Second screenshot"> <img src="/screenshots/03.jpg" width="280" height="591" alt="Third screenshot">
 
 __________
 
