@@ -58,12 +58,15 @@ public class FlavorWidget extends AppWidgetProvider {
         Single.fromCallable(() -> cardDao.getAllCards())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(cards -> {
-                    Card randomCard = getRandomCard(cards);
-                    setupCardFlavor(views, randomCard);
-                    setupCardName(views, randomCard);
-                    appWidgetManager.updateAppWidget(appWidgetId, views);
-                });
+                .subscribe(cards -> showRandomCardFlavor(appWidgetManager, appWidgetId, views, cards));
+    }
+
+    private void showRandomCardFlavor(AppWidgetManager appWidgetManager, int appWidgetId, RemoteViews views, List<Card> cards) {
+        Card randomCard = getRandomCard(cards);
+        if (randomCard == null) return;
+        setupCardFlavor(views, randomCard);
+        setupCardName(views, randomCard);
+        appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     private void setupCardName(RemoteViews views, Card randomCard) {
@@ -78,6 +81,9 @@ public class FlavorWidget extends AppWidgetProvider {
 
     private Card getRandomCard(List<Card> cards) {
         Random random = new Random();
+        if (cards.isEmpty()) {
+            return null;
+        }
         int cardIndex = random.nextInt(cards.size());
         return cards.get(cardIndex);
     }
