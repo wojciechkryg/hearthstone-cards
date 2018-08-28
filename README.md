@@ -1,15 +1,21 @@
-# HearthCards
+# <img src="/app/src/main/res/mipmap-mdpi/ic_launcher.png" width="40" height="40" alt="HearthCards"> HearthCards
  Project made as Capstone Project at Udacity Android Nanodegree.
 
 __________
 
 ### Project Features
 
-
+* All collectible cards from **Hearthstone**
+* Cards details and images with different languages
+* Copyable card details
+* Widget with random card flavor which changes every 24h
+* Offline after first downloading data
+* No need to update app after new game patch, just launch the app and redownload the data
 __________
 
 ### Screenshots
 
+<img src="/screenshots/01.png" width="280" height="591" alt="First screenshot"> <img src="/screenshots/02.png" width="280" height="591" alt="Second screenshot"> <img src="/screenshots/03.png" width="280" height="591" alt="Third screenshot">
 
 __________
 
