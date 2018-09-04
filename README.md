@@ -1,7 +1,6 @@
-# <img src="/app/src/main/res/mipmap-mdpi/ic_launcher.png" width="40" height="40" alt="HearthCards"> HearthCards
- Project made as Capstone Project at Udacity Android Nanodegree.
+# Hearthstone Cards
 
-__________
+![](/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 
 ### Project Features
 
@@ -11,13 +10,10 @@ __________
 * Widget with random card flavor which changes every 24h
 * Offline after first downloading data
 * No need to update app after new game patch, just launch the app and redownload the data
-__________
 
 ### Screenshots
 
 <img src="/screenshots/01.jpg" width="280" height="591" alt="First screenshot"> <img src="/screenshots/02.jpg" width="280" height="591" alt="Second screenshot"> <img src="/screenshots/03.jpg" width="280" height="591" alt="Third screenshot">
-
-__________
 
 ## How to compile?
 
@@ -46,4 +42,21 @@ Then add the following lines:
 HEARTHSTONE_API_KEY="key"
 ADMOB_HEARTHCARDS_ID="app_id"
 ADMOB_HEARTHCARDS_BOTTOM_BANNER_ID="banner_ad_unit_id"
+```
+
+## License
+```
+ Copyright 2018 Wojciech Kryg
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 ```
