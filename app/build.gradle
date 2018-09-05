@@ -19,8 +19,6 @@ android {
     }
     buildTypes.each {
         it.buildConfigField 'String', 'HEARTHSTONE_API_KEY', HEARTHSTONE_API_KEY
-        it.buildConfigField 'String', 'ADMOB_HEARTHCARDS_ID', ADMOB_HEARTHCARDS_ID
-        it.resValue 'string', 'admob_bottom_banner_id', ADMOB_HEARTHCARDS_BOTTOM_BANNER_ID
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,7 +40,6 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
     implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
     implementation "com.google.firebase:firebase-core:$firebase_core_version"
-    implementation "com.google.android.gms:play-services-ads:$ads_version"
     implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
     implementation "com.jakewharton:butterknife:$butterknife_version"

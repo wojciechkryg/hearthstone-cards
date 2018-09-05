@@ -20,7 +20,7 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/settingsSettingsFragment"
-        android:name="com.wojdor.hearthcards.application.settings.SettingsFragment"
+        android:name="com.wojdor.hearthstonecards.application.settings.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

@@ -3,7 +3,7 @@
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/settings_activity_general_header">
 
-        <com.wojdor.hearthcards.application.view.SummaryValueListPreference
+        <com.wojdor.hearthstonecards.application.view.SummaryValueListPreference
             android:entries="@array/locales"
             android:entryValues="@array/localeValues"
             android:key="@string/settings_preferences_locale_key"
