@@ -23,7 +23,7 @@ public class ClassPagerViewModel extends BaseAndroidViewModel {
     public LiveData<List<String>> getClassesWhichHaveCards() {
         MutableLiveData<List<String>> data = new MutableLiveData<>();
         Single.fromCallable(() -> {
-            List<String> classNames = userSession.getVersionInfo().getClassNames();
+            List<String> classNames = getUserSession().getVersionInfo().getClassNames();
             return filterClassesWhichHaveCards(classNames);
         })
                 .subscribeOn(Schedulers.io())
@@ -36,7 +36,7 @@ public class ClassPagerViewModel extends BaseAndroidViewModel {
     private List<String> filterClassesWhichHaveCards(List<String> classNames) {
         List<String> classNamesWithCards = new ArrayList<>();
         for (String className : classNames) {
-            int amountOfCards = cardDao.getAmountOfCardsFromClass(className);
+            int amountOfCards = getCardDao().getAmountOfCardsFromClass(className);
             if (amountOfCards == 0) continue;
             classNamesWithCards.add(className);
         }

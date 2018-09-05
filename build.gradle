@@ -8,6 +8,7 @@ buildscript {
         version_name = "1.0"
         application_id = "com.wojdor.hearthstonecards"
 
+        kotlin_version = '1.2.41'
         gradle_version = '3.0.1'
         fabric_version = '1.25.4'
         google_services_version = '4.1.0'
@@ -39,6 +40,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "io.fabric.tools:gradle:$fabric_version"
         classpath "com.google.gms:google-services:$google_services_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 

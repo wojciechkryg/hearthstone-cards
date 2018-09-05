@@ -19,13 +19,13 @@ public class SplashViewModel extends BaseAndroidViewModel {
 
     public LiveData<VersionInfo> getLocalVersionInfo() {
         MutableLiveData<VersionInfo> data = new MutableLiveData<>();
-        data.setValue(userSession.getVersionInfo());
+        data.setValue(getUserSession().getVersionInfo());
         return data;
     }
 
     public LiveData<VersionInfo> getRemoteVersionInfo() {
         MutableLiveData<VersionInfo> data = new MutableLiveData<>();
-        disposable.add(cardApi.getVersionInfo()
+        getDisposable().add(getCardApi().getVersionInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .subscribe(versionInfoModel -> data.postValue(VersionInfoMapper.map(versionInfoModel)),
@@ -35,21 +35,21 @@ public class SplashViewModel extends BaseAndroidViewModel {
 
     public LiveData<String> getLocale() {
         MutableLiveData<String> data = new MutableLiveData<>();
-        data.setValue(userSession.getLocale());
+        data.setValue(getUserSession().getLocale());
         return data;
     }
 
     public void setLocale(String locale) {
-        userSession.setLocale(locale);
+        getUserSession().setLocale(locale);
     }
 
     public LiveData<Boolean> wasLanguageChanged() {
         MutableLiveData<Boolean> data = new MutableLiveData<>();
-        data.setValue(userSession.wasLanguageChanged());
+        data.setValue(getUserSession().wasLanguageChanged());
         return data;
     }
 
     public void wasLanguageChanged(boolean wasLanguageChanged) {
-        userSession.wasLanguageChanged(wasLanguageChanged);
+        getUserSession().wasLanguageChanged(wasLanguageChanged);
     }
 }

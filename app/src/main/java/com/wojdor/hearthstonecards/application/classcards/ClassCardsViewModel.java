@@ -16,6 +16,6 @@ public class ClassCardsViewModel extends BaseAndroidViewModel {
     }
 
     public LiveData<List<Card>> getCardsFromClass(String className) {
-        return cardDao.getCardsFromClass(className);
+        return getCardDao().getCardsFromClass(className);
     }
 }

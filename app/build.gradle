@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'io.fabric'
 
 android {
@@ -54,6 +55,11 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -21,7 +21,7 @@ public class CardViewModel extends BaseAndroidViewModel {
     }
 
     public LiveData<Card> getCardByCardId(String cardId) {
-        return cardDao.getCardByCardId(cardId);
+        return getCardDao().getCardByCardId(cardId);
     }
 
     public LiveData<File> getCardImage(String cardId) {
