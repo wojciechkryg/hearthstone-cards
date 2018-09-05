@@ -9,6 +9,7 @@ buildscript {
         application_id = "com.wojdor.hearthstonecards"
 
         kotlin_version = '1.2.41'
+        anko_version = '0.10.5'
         gradle_version = '3.0.1'
         fabric_version = '1.25.4'
         google_services_version = '4.1.0'
