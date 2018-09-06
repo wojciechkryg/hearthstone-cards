@@ -27,7 +27,7 @@ public class ClassPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position < classNames.size()) {
-            return ClassCardsFragment.newInstance(classNames.get(position));
+            return ClassCardsFragment.Companion.newInstance(classNames.get(position));
         } else {
             return null;
         }
