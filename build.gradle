@@ -1,16 +1,16 @@
 buildscript {
 
     ext {
-        compile_sdk_version = 27
+        compile_sdk_version = 28
         min_sdk_version = 21
-        target_sdk_version = 27
+        target_sdk_version = 28
         version_code = 1
         version_name = "1.0"
         application_id = "com.wojdor.hearthstonecards"
 
-        kotlin_version = '1.2.41'
+        kotlin_version = '1.2.50'
         anko_version = '0.10.5'
-        gradle_version = '3.0.1'
+        gradle_version = '3.1.4'
         fabric_version = '1.25.4'
         google_services_version = '4.1.0'
         android_support_version = '27.1.1'
