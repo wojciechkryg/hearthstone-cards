@@ -28,8 +28,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun clearCache() {
-        Thread { Glide.get(context!!).clearDiskCache() }.start()
-        Glide.get(context!!).clearMemory()
+        context?.let {
+            Thread { Glide.get(it).clearDiskCache() }.start()
+            Glide.get(it).clearMemory()
+        }
     }
 
     private fun relaunchApp() {
