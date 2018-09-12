@@ -43,7 +43,7 @@ class FlavorWidget : AppWidgetProvider() {
     }
 
     private fun setupWidgetLayout(appWidgetManager: AppWidgetManager, appWidgetId: Int, views: RemoteViews) {
-        Observable.fromCallable { cardDao.allCards }
+        Observable.fromCallable { cardDao.getAllCards() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { showRandomCardFlavor(appWidgetManager, appWidgetId, views, it) }
