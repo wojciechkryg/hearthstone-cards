@@ -5,6 +5,7 @@ import android.app.IntentService
 import android.content.Context
 import android.content.Intent
 import android.support.v4.os.ResultReceiver
+import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.util.CardImageDownloader
 import com.wojdor.hearthstonecards.data.database.CardDatabase
 import com.wojdor.hearthstonecards.data.database.dao.CardDao
@@ -26,17 +27,16 @@ class UpdateIntentService : IntentService(UpdateIntentService::class.java.simple
     private val cardImageDownloader: CardImageDownloader = CardImageDownloader(this)
 
     override fun onHandleIntent(intent: Intent?) {
-        val versionInfo = intent?.extras?.getParcelable<VersionInfo>(VERSION_INFO_EXTRA)
-        val updateResultReceiver = intent?.extras?.getParcelable<ResultReceiver>(UPDATE_RESULT_RECEIVER_EXTRA)
-        val locale = userSession.locale
+        val versionInfo = intent?.extras?.getParcelable<VersionInfo>(VERSION_INFO_EXTRA) ?: return
+        val updateResultReceiver = intent.extras?.getParcelable<ResultReceiver>(UPDATE_RESULT_RECEIVER_EXTRA)
+                ?: return
+        val locale = userSession.locale ?: getString(R.string.settings_preferences_default_locale)
         val apiCalls = mutableListOf<Single<List<CardModel>>>()
-        for (className in versionInfo!!.classNames) {
-            apiCalls.add(downloadDataForClass(className, locale))
-        }
+        versionInfo.classNames.forEach { apiCalls.add(downloadDataForClass(it, locale)) }
         makeAllApiCalls(apiCalls, versionInfo, updateResultReceiver)
     }
 
-    private fun makeAllApiCalls(apiCalls: List<Single<List<CardModel>>>, versionInfo: VersionInfo, updateResultReceiver: ResultReceiver?) {
+    private fun makeAllApiCalls(apiCalls: List<Single<List<CardModel>>>, versionInfo: VersionInfo, updateResultReceiver: ResultReceiver) {
         Single.zip<List<CardModel>, List<CardModel>>(apiCalls) { ZipResultMapper.map(it) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
@@ -50,15 +50,13 @@ class UpdateIntentService : IntentService(UpdateIntentService::class.java.simple
     }
 
     @SuppressLint("RestrictedApi")
-    private fun onSuccess(cardModels: List<CardModel>, versionInfo: VersionInfo, updateResultReceiver: ResultReceiver?) {
-        val locale = userSession.locale
-        for (cardModel in cardModels) {
-            cardImageDownloader.getImage(cardModel.cardId, locale)
-        }
+    private fun onSuccess(cardModels: List<CardModel>, versionInfo: VersionInfo, updateResultReceiver: ResultReceiver) {
+        val locale = userSession.locale ?: getString(R.string.settings_preferences_default_locale)
+        cardModels.forEach { cardImageDownloader.getImage(it.cardId, locale) }
         val cards = CardMapper.map(cardModels)
         cardDao.insertCards(cards)
         userSession.versionInfo = versionInfo
-        updateResultReceiver?.send(UpdateResultReceiver.RESULT_SUCCESS, null)
+        updateResultReceiver.send(UpdateResultReceiver.RESULT_SUCCESS, null)
     }
 
     @SuppressLint("RestrictedApi")

@@ -6,6 +6,7 @@ import android.os.Handler
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.base.BaseActivity
 import com.wojdor.hearthstonecards.application.classpager.ClassPagerActivity
+import com.wojdor.hearthstonecards.application.extension.notEquals
 import com.wojdor.hearthstonecards.application.extension.observe
 import com.wojdor.hearthstonecards.application.update.UpdateIntentService
 import com.wojdor.hearthstonecards.application.update.UpdateResultReceiver

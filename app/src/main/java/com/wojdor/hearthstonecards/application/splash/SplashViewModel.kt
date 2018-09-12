@@ -18,7 +18,7 @@ class SplashViewModel(application: Application) : BaseAndroidViewModel(applicati
     val remoteVersionInfo: LiveData<VersionInfo>
         get() {
             val data = MutableLiveData<VersionInfo>()
-            disposable.add(cardApi.versionInfo
+            disposable.add(cardApi.getVersionInfo()
                     .subscribeOn(Schedulers.io())
                     .observeOn(Schedulers.io())
                     .subscribe({ data.postValue(VersionInfoMapper.map(it)) },
@@ -34,9 +34,9 @@ class SplashViewModel(application: Application) : BaseAndroidViewModel(applicati
     }
 
     val wasLanguageChanged: LiveData<Boolean>
-        get() = MutableLiveData<Boolean>().apply { value = userSession.wasLanguageChanged() }
+        get() = MutableLiveData<Boolean>().apply { value = userSession.wasLanguageChanged }
 
     fun wasLanguageChanged(wasLanguageChanged: Boolean) {
-        userSession.wasLanguageChanged(wasLanguageChanged)
+        userSession.wasLanguageChanged = wasLanguageChanged
     }
 }

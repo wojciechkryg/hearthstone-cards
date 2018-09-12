@@ -24,7 +24,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun clearData() {
         clearCache()
-        UserSession.getInstance(context).wasLanguageChanged(true)
+        context?.let { UserSession.getInstance(it).wasLanguageChanged = true }
     }
 
     private fun clearCache() {
