@@ -118,7 +118,7 @@ class SplashActivity : BaseActivity<SplashViewModel>(), UpdateResultReceiver.Rec
         updateResultReceiver.setReceiver(this)
     }
 
-    override fun onReceiveResult(resultCode: Int, resultData: Bundle) {
+    override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
         if (resultCode == UpdateResultReceiver.RESULT_SUCCESS) {
             viewModel.wasLanguageChanged(false)
             launchClassPagerActivity()
