@@ -15,7 +15,7 @@ class ClassPagerViewModel(application: Application) : BaseAndroidViewModel(appli
         get() {
             val data = MutableLiveData<List<String>>()
             Observable.fromCallable {
-                val classNames = userSession.versionInfo.classNames
+                val classNames = userSession.versionInfo?.classNames ?: emptyList()
                 classNames.filter { cardDao.getAmountOfCardsFromClass(it).isPositive }
             }
                     .subscribeOn(Schedulers.io())

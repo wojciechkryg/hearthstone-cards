@@ -14,8 +14,8 @@ class UserSession private constructor(context: Context) {
 
     var versionInfo: VersionInfo?
         get() {
-            val versionInfoJson = sharedPreferences.getString(VERSION_INFO_KEY, null)
-            return jsonParser.fromJson(VersionInfo::class.java, versionInfoJson!!)
+            val versionInfoJson = sharedPreferences.getString(VERSION_INFO_KEY, null) ?: return null
+            return jsonParser.fromJson(VersionInfo::class.java, versionInfoJson)
         }
         set(versionInfo) {
             val versionInfoJson = jsonParser.toJson(versionInfo)

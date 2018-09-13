@@ -21,7 +21,6 @@ buildscript {
         firebase_core_version = "16.0.3"
         rx_java_version = "2.2.0"
         rx_android_version = "2.0.2"
-        butterknife_version = '8.8.1'
         timber_version = '4.7.1'
         retrofit_version = '2.4.0'
         glide_version = '4.7.1'

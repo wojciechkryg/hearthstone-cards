@@ -16,16 +16,12 @@ abstract class CardDatabase : RoomDatabase() {
     companion object {
 
         private const val DATABASE_NAME = "card_database"
-        private val LOCK = Any()
         private var instance: CardDatabase? = null
 
         fun getInstance(context: Context): CardDatabase {
             if (instance == null) {
-                synchronized(LOCK) {
-                    instance = Room.databaseBuilder(context.applicationContext,
-                            CardDatabase::class.java, DATABASE_NAME)
-                            .build()
-                }
+                instance = Room.databaseBuilder(context.applicationContext,
+                        CardDatabase::class.java, DATABASE_NAME).build()
             }
             return instance as CardDatabase
         }

@@ -9,6 +9,7 @@ data class Card(
         val cardId: String,
         val name: String,
         val set: String,
+        val type: String,
         val rarity: String,
         val cost: Int,
         val text: String,

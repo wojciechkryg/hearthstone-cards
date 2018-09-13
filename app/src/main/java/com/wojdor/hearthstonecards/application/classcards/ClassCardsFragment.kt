@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.base.BaseFragment
 import com.wojdor.hearthstonecards.application.card.CardActivity
+import com.wojdor.hearthstonecards.application.extension.inflate
 import com.wojdor.hearthstonecards.application.extension.observeNonNull
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.fragment_class_cards.*
@@ -23,13 +24,16 @@ class ClassCardsFragment : BaseFragment<ClassCardsViewModel>() {
     private lateinit var classCardsAdapter: ClassCardsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_class_cards, container, false)
+        return container?.inflate(R.layout.fragment_class_cards)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initComponents()
-        return view
     }
 
     private fun initComponents() {
-        classCardsAdapter = ClassCardsAdapter { card -> this.openCardActivity(card) }
+        classCardsAdapter = ClassCardsAdapter { openCardActivity(it) }
         with(classCardsCardsRv) {
             layoutManager = GridLayoutManager(context, calculateNumberOfColumns())
             adapter = classCardsAdapter

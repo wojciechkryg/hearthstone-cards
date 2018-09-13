@@ -1,15 +1,18 @@
 package com.wojdor.hearthstonecards.data.service.mapper
 
+import com.wojdor.hearthstonecards.application.extension.empty
 import com.wojdor.hearthstonecards.data.service.model.CardModel
 import com.wojdor.hearthstonecards.domain.Card
+import timber.log.Timber
 import java.util.*
 
 object CardMapper {
 
     fun map(models: List<CardModel>): List<Card> {
         val cards = ArrayList<Card>()
-        for (model in models) {
-            cards.add(map(model))
+        models.forEach {
+            Timber.d(it.cardId)
+            cards.add(map(it))
         }
         return cards
     }
@@ -19,10 +22,11 @@ object CardMapper {
             model.cardId,
             model.name,
             model.cardSet,
+            model.type,
             model.rarity,
             model.cost,
-            model.text,
-            model.flavor,
+            model.text ?: String.empty,
+            model.flavor ?: String.empty,
             model.artist,
             model.playerClass
     )
