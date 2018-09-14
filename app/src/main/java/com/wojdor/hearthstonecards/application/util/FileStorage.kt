@@ -2,11 +2,9 @@ package com.wojdor.hearthstonecards.application.util
 
 import android.content.Context
 import android.graphics.Bitmap
-
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
-
-import timber.log.Timber
 
 class FileStorage(private val context: Context) {
 
@@ -21,7 +19,7 @@ class FileStorage(private val context: Context) {
         }
     }
 
-    operator fun get(fileName: String): File {
+    fun get(fileName: String): File {
         val path = String.format(PATH_FORMAT, context.filesDir.absolutePath, fileName)
         return File(path)
     }

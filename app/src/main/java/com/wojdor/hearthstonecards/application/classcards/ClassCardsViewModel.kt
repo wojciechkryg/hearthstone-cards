@@ -8,7 +8,5 @@ import com.wojdor.hearthstonecards.domain.Card
 
 class ClassCardsViewModel(application: Application) : BaseAndroidViewModel(application) {
 
-    fun getCardsFromClass(className: String): LiveData<List<Card>> {
-        return cardDao.getCardsFromClass(className)
-    }
+    fun getCardsFromClass(className: String): LiveData<List<Card>> = repository.getCardsFromClass(className)
 }

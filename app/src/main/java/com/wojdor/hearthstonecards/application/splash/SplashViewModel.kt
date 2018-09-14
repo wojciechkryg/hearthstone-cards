@@ -2,41 +2,28 @@ package com.wojdor.hearthstonecards.application.splash
 
 import android.app.Application
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-
 import com.wojdor.hearthstonecards.application.base.BaseAndroidViewModel
-import com.wojdor.hearthstonecards.data.service.mapper.VersionInfoMapper
 import com.wojdor.hearthstonecards.domain.VersionInfo
-
-import io.reactivex.schedulers.Schedulers
 
 class SplashViewModel(application: Application) : BaseAndroidViewModel(application) {
 
-    val localVersionInfo
-        get() = MutableLiveData<VersionInfo>().apply { value = userSession.versionInfo }
+    val localVersionInfo: LiveData<VersionInfo>
+        get() = repository.localVersionInfo
 
     val remoteVersionInfo: LiveData<VersionInfo>
-        get() {
-            val data = MutableLiveData<VersionInfo>()
-            disposable.add(cardApi.getVersionInfo()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
-                    .subscribe({ data.postValue(VersionInfoMapper.map(it)) },
-                            { data.postValue(null) }))
-            return data
-        }
+        get() = repository.remoteVersionInfo
 
     val locale: LiveData<String>
-        get() = MutableLiveData<String>().apply { value = userSession.locale }
+        get() = repository.locale
 
     fun setLocale(locale: String) {
-        userSession.locale = locale
+        repository.setLocale(locale)
     }
 
     val wasLanguageChanged: LiveData<Boolean>
-        get() = MutableLiveData<Boolean>().apply { value = userSession.wasLanguageChanged }
+        get() = repository.wasLanguageChanged
 
     fun wasLanguageChanged(wasLanguageChanged: Boolean) {
-        userSession.wasLanguageChanged = wasLanguageChanged
+        repository.wasLanguageChanged(wasLanguageChanged)
     }
 }

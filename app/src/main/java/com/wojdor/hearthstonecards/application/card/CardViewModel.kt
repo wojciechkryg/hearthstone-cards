@@ -14,9 +14,7 @@ class CardViewModel(application: Application) : BaseAndroidViewModel(application
 
     private val fileStorage: FileStorage = FileStorage(application)
 
-    fun getCardByCardId(cardId: String): LiveData<Card> {
-        return cardDao.getCardByCardId(cardId)
-    }
+    fun getCardByCardId(cardId: String): LiveData<Card> = repository.getCardByCardId(cardId)
 
     fun getCardImage(cardId: String): LiveData<File> {
         val file = fileStorage.get(cardId)

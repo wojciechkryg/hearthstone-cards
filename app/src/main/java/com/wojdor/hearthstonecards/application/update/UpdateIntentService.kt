@@ -8,8 +8,7 @@ import android.support.v4.os.ResultReceiver
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.util.CardImageDownloader
 import com.wojdor.hearthstonecards.data.database.CardDatabase
-import com.wojdor.hearthstonecards.data.database.dao.CardDao
-import com.wojdor.hearthstonecards.data.service.CardApi
+import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.data.service.CardService
 import com.wojdor.hearthstonecards.data.service.mapper.CardMapper
 import com.wojdor.hearthstonecards.data.service.mapper.ZipResultMapper
@@ -20,10 +19,14 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 class UpdateIntentService : IntentService(UpdateIntentService::class.java.simpleName) {
+    //TODO: It should be LifecycleService or delete that service
 
-    private val cardApi: CardApi = CardService.getInstance()
-    private val cardDao: CardDao = CardDatabase.getInstance(this).cardDao()
-    private val userSession: UserSession = UserSession.getInstance(this)
+    private val repository by lazy {
+        CardRepository(CardService.getInstance(), CardDatabase.getInstance(this).cardDao(),
+                UserSession.getInstance(this)
+        )
+    }
+    
     private val cardImageDownloader: CardImageDownloader = CardImageDownloader(this)
 
     override fun onHandleIntent(intent: Intent?) {
