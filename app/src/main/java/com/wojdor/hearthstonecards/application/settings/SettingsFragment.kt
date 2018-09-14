@@ -9,7 +9,7 @@ import com.wojdor.hearthstonecards.data.session.UserSession
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
-    override fun onCreatePreferences(savedInstanceState: Bundle, rootKey: String) {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.settings_preferences)
         findPreference(getString(R.string.settings_preferences_locale_key)).setOnPreferenceChangeListener { _, _ ->
             restartApp()
