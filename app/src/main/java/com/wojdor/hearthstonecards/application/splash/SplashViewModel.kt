@@ -2,16 +2,17 @@ package com.wojdor.hearthstonecards.application.splash
 
 import android.app.Application
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MediatorLiveData
 import com.wojdor.hearthstonecards.application.base.BaseAndroidViewModel
+import com.wojdor.hearthstonecards.application.extension.notEquals
+import com.wojdor.hearthstonecards.application.extension.setDifferentValue
 import com.wojdor.hearthstonecards.domain.VersionInfo
 
 class SplashViewModel(application: Application) : BaseAndroidViewModel(application) {
 
-    val localVersionInfo: LiveData<VersionInfo>
-        get() = repository.localVersionInfo
+    private val localVersionInfo = repository.localVersionInfo
 
-    val remoteVersionInfo: LiveData<VersionInfo>
-        get() = repository.remoteVersionInfo
+    private val remoteVersionInfo = repository.remoteVersionInfo
 
     val locale: LiveData<String>
         get() = repository.locale
@@ -20,10 +21,28 @@ class SplashViewModel(application: Application) : BaseAndroidViewModel(applicati
         repository.setLocale(locale)
     }
 
-    val wasLanguageChanged: LiveData<Boolean>
-        get() = repository.wasLanguageChanged
-
-    fun wasLanguageChanged(wasLanguageChanged: Boolean) {
-        repository.wasLanguageChanged(wasLanguageChanged)
+    val isNewVersionAvailable: LiveData<Boolean> by lazy {
+        MediatorLiveData<Boolean>().apply {
+            addSource(remoteVersionInfo) { setDifferentValue(isNewVersion(localVersionInfo.value, it)) }
+            addSource(localVersionInfo) { setDifferentValue(isNewVersion(it, remoteVersionInfo.value)) }
+        }
     }
+
+    fun downloadCardData() {
+        // TODO: These 'returns' can aim to incorrect ui experience
+        repository.downloadCardData(remoteVersionInfo.value ?: return, locale.value ?: return)
+    }
+
+    private fun isNewVersion(localVersionInfo: VersionInfo?, remoteVersionInfo: VersionInfo?): Boolean? {
+        return if (remoteVersionInfo == null) {
+            null
+        } else {
+            isFirstLaunch(localVersionInfo) || isNewVersionOnRemote(remoteVersionInfo, localVersionInfo)
+        }
+    }
+
+    private fun isNewVersionOnRemote(remoteVersionInfo: VersionInfo?, localVersionInfo: VersionInfo?) =
+            remoteVersionInfo != null && remoteVersionInfo.version.isNotEmpty() && localVersionInfo?.notEquals(remoteVersionInfo) == true
+
+    private fun isFirstLaunch(localVersionInfo: VersionInfo?) = localVersionInfo == null
 }

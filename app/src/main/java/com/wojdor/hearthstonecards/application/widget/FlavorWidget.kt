@@ -9,8 +9,8 @@ import android.widget.RemoteViews
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.extension.asHtml
 import com.wojdor.hearthstonecards.application.splash.SplashActivity
+import com.wojdor.hearthstonecards.data.database.CardDao
 import com.wojdor.hearthstonecards.data.database.CardDatabase
-import com.wojdor.hearthstonecards.data.database.dao.CardDao
 import com.wojdor.hearthstonecards.domain.Card
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

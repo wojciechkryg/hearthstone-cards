@@ -11,8 +11,8 @@ class ClassPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAd
 
     fun setItems(items: List<String>) {
         with(classNames) {
-            classNames.clear()
-            classNames.addAll(items)
+            clear()
+            addAll(items)
         }
         notifyDataSetChanged()
     }

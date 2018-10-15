@@ -12,6 +12,7 @@ class CardImageDownloader(private val context: Context) {
     fun getImage(fileName: String, locale: String) {
         try {
             val url = String.format(CARD_IMAGE_API, locale, fileName)
+            // TODO: Use Picasso instead of Glide
             val bitmap = Glide.with(context)
                     .asBitmap()
                     .load(url)

@@ -58,14 +58,13 @@ class ClassCardsFragment : BaseFragment<ClassCardsViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        arguments?.let {
-            val className = it.getString(CLASS_NAME_EXTRA)
+        arguments?.let { bundle ->
+            val className = bundle.getString(CLASS_NAME_EXTRA) ?: return
             viewModel.getCardsFromClass(className).observeNonNull(this) { classCardsAdapter.setItems(it) }
         }
     }
 
     companion object {
-
         private const val CLASS_NAME_EXTRA = "CLASS_NAME_EXTRA"
         private const val MIN_NUMBER_OF_COLUMNS = 2
         private const val COLUMN_WIDTH_DIVIDER = 300

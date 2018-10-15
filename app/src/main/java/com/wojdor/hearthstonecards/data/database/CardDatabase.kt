@@ -5,7 +5,6 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
-import com.wojdor.hearthstonecards.data.database.dao.CardDao
 import com.wojdor.hearthstonecards.domain.Card
 
 @Database(entities = [(Card::class)], version = 1, exportSchema = false)
@@ -14,7 +13,6 @@ abstract class CardDatabase : RoomDatabase() {
     abstract fun cardDao(): CardDao
 
     companion object {
-
         private const val DATABASE_NAME = "card_database"
         private var instance: CardDatabase? = null
 
