@@ -1,13 +1,8 @@
 package com.wojdor.hearthstonecards.application.base
 
-import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 
-abstract class BaseActivity<T : BaseAndroidViewModel> : AppCompatActivity() {
+abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 
-    protected abstract val viewModelClass: Class<T>
-
-    protected val viewModel: T by lazy {
-        ViewModelProviders.of(this).get(viewModelClass)
-    }
+    protected abstract val viewModel: T
 }

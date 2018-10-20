@@ -1,18 +1,14 @@
 package com.wojdor.hearthstonecards.application.card
 
-import android.app.Application
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-
-import com.wojdor.hearthstonecards.application.base.BaseAndroidViewModel
+import com.wojdor.hearthstonecards.application.base.BaseViewModel
 import com.wojdor.hearthstonecards.application.util.FileStorage
+import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.domain.Card
-
 import java.io.File
 
-class CardViewModel(application: Application) : BaseAndroidViewModel(application) {
-
-    private val fileStorage: FileStorage = FileStorage(application)
+class CardViewModel(repository: CardRepository, private val fileStorage: FileStorage) : BaseViewModel(repository) {
 
     fun getCardByCardId(cardId: String): LiveData<Card> = repository.getCardByCardId(cardId)
 

@@ -10,10 +10,11 @@ import com.wojdor.hearthstonecards.application.base.BaseActivity
 import com.wojdor.hearthstonecards.application.extension.observeNonNull
 import com.wojdor.hearthstonecards.application.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_class_pager.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ClassPagerActivity : BaseActivity<ClassPagerViewModel>() {
 
-    override val viewModelClass = ClassPagerViewModel::class.java
+    override val viewModel: ClassPagerViewModel by viewModel()
 
     private lateinit var classPagerAdapter: ClassPagerAdapter
 

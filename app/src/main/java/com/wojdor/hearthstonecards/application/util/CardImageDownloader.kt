@@ -5,9 +5,7 @@ import com.bumptech.glide.Glide
 import timber.log.Timber
 import java.util.concurrent.ExecutionException
 
-class CardImageDownloader(private val context: Context) {
-
-    private val fileStorage: FileStorage = FileStorage(context)
+class CardImageDownloader(private val context: Context, private val fileStorage: FileStorage) {
 
     fun getImage(fileName: String, locale: String) {
         try {

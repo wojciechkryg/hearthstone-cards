@@ -20,10 +20,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class CardRepository private constructor(private val cardApi: CardApi,
-                                         private val cardDao: CardDao,
-                                         private val userSession: UserSession,
-                                         private val cardImageDownloader: CardImageDownloader) {
+class CardRepository(private val cardApi: CardApi,
+                     private val cardDao: CardDao,
+                     private val userSession: UserSession,
+                     private val cardImageDownloader: CardImageDownloader) {
 
     private val disposables by lazy { CompositeDisposable() }
 
@@ -78,6 +78,8 @@ class CardRepository private constructor(private val cardApi: CardApi,
 
     fun getCardsFromClass(className: String): LiveData<List<Card>> = cardDao.getCardsFromClass(className)
 
+    fun getAllCards(): List<Card> = cardDao.getAllCards()
+
     fun downloadCardData(versionInfo: VersionInfo, locale: String) {
         val apiCallsForAllClasses = getApiCallsForAllClasses(versionInfo, locale)
         downloadCardsForAllClasses(apiCallsForAllClasses, versionInfo, locale)
@@ -111,17 +113,5 @@ class CardRepository private constructor(private val cardApi: CardApi,
 
     fun onDestroy() {
         disposables.clear()
-    }
-
-    companion object {
-        private var instance: CardRepository? = null
-
-        fun getInstance(cardApi: CardApi, cardDao: CardDao, userSession: UserSession,
-                        cardImageDownloader: CardImageDownloader): CardRepository {
-            if (instance == null) {
-                instance = CardRepository(cardApi, cardDao, userSession, cardImageDownloader)
-            }
-            return instance as CardRepository
-        }
     }
 }

@@ -4,10 +4,11 @@ import android.os.Bundle
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_settings.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SettingsActivity : BaseActivity<SettingsViewModel>() {
 
-    override val viewModelClass = SettingsViewModel::class.java
+    override val viewModel: SettingsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

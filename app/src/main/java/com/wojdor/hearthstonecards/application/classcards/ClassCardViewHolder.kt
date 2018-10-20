@@ -10,10 +10,12 @@ import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.util.FileStorage
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.item_card.view.*
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 
-class ClassCardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class ClassCardViewHolder(private val view: View) : RecyclerView.ViewHolder(view), KoinComponent {
 
-    private val fileStorage: FileStorage = FileStorage(view.context)
+    private val fileStorage: FileStorage by inject()
 
     fun bind(card: Card, onCardClick: (Card) -> Unit) {
         with(view) {

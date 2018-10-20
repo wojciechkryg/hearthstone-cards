@@ -1,6 +1,6 @@
 package com.wojdor.hearthstonecards.application.settings
 
-import android.app.Application
-import com.wojdor.hearthstonecards.application.base.BaseAndroidViewModel
+import com.wojdor.hearthstonecards.application.base.BaseViewModel
+import com.wojdor.hearthstonecards.data.repository.CardRepository
 
-class SettingsViewModel(application: Application) : BaseAndroidViewModel(application)
+class SettingsViewModel(cardRepository: CardRepository) : BaseViewModel(cardRepository)

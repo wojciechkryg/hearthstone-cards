@@ -1,14 +1,14 @@
 package com.wojdor.hearthstonecards.application.splash
 
-import android.app.Application
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
-import com.wojdor.hearthstonecards.application.base.BaseAndroidViewModel
+import com.wojdor.hearthstonecards.application.base.BaseViewModel
 import com.wojdor.hearthstonecards.application.extension.notEquals
 import com.wojdor.hearthstonecards.application.extension.setDifferentValue
+import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.domain.VersionInfo
 
-class SplashViewModel(application: Application) : BaseAndroidViewModel(application) {
+class SplashViewModel(cardRepository: CardRepository) : BaseViewModel(cardRepository) {
 
     private val localVersionInfo = repository.localVersionInfo
 

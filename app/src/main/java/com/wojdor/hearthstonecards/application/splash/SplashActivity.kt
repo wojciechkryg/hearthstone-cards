@@ -10,10 +10,11 @@ import com.wojdor.hearthstonecards.application.extension.observeNonNull
 import com.wojdor.hearthstonecards.application.util.Language
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.toast
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SplashActivity : BaseActivity<SplashViewModel>() {
 
-    override val viewModelClass = SplashViewModel::class.java
+    override val viewModel: SplashViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

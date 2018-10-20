@@ -13,11 +13,13 @@ import com.wojdor.hearthstonecards.application.extension.observeNonNull
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.layout_card_details.*
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 
 class CardActivity : BaseActivity<CardViewModel>() {
 
-    override val viewModelClass = CardViewModel::class.java
+    override val viewModel: CardViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

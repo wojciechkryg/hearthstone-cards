@@ -9,20 +9,20 @@ import android.widget.RemoteViews
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.extension.asHtml
 import com.wojdor.hearthstonecards.application.splash.SplashActivity
-import com.wojdor.hearthstonecards.data.database.CardDao
-import com.wojdor.hearthstonecards.data.database.CardDatabase
+import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.domain.Card
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 import java.util.*
 
-class FlavorWidget : AppWidgetProvider() {
+class FlavorWidget : AppWidgetProvider(), KoinComponent {
 
-    private lateinit var cardDao: CardDao
+    private val repository: CardRepository by inject()
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        cardDao = CardDatabase.getInstance(context).cardDao()
         appWidgetIds.forEach { updateAppWidget(context, appWidgetManager, it) }
     }
 
@@ -43,7 +43,7 @@ class FlavorWidget : AppWidgetProvider() {
     }
 
     private fun setupWidgetLayout(appWidgetManager: AppWidgetManager, appWidgetId: Int, views: RemoteViews) {
-        Observable.fromCallable { cardDao.getAllCards() }
+        Observable.fromCallable { repository.getAllCards() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { showRandomCardFlavor(appWidgetManager, appWidgetId, views, it) }

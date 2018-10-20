@@ -16,10 +16,11 @@ import com.wojdor.hearthstonecards.application.extension.observeNonNull
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.fragment_class_cards.*
 import kotlinx.android.synthetic.main.item_card.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ClassCardsFragment : BaseFragment<ClassCardsViewModel>() {
 
-    override val viewModelClass = ClassCardsViewModel::class.java
+    override val viewModel: ClassCardsViewModel by viewModel()
 
     private lateinit var classCardsAdapter: ClassCardsAdapter
 

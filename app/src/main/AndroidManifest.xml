@@ -36,10 +36,6 @@
             android:name="com.wojdor.hearthstonecards.application.settings.SettingsActivity"
             android:theme="@style/ExitTransitionTheme" />
 
-        <service
-            android:name="com.wojdor.hearthstonecards.application.update.UpdateIntentService"
-            android:exported="false" />
-
         <receiver android:name="com.wojdor.hearthstonecards.application.widget.FlavorWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
