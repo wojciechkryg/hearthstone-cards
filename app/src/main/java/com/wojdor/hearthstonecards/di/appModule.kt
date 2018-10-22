@@ -1,5 +1,6 @@
 package com.wojdor.hearthstonecards.di
 
+import android.arch.persistence.room.Room
 import com.wojdor.hearthstonecards.application.card.CardViewModel
 import com.wojdor.hearthstonecards.application.classcards.ClassCardsViewModel
 import com.wojdor.hearthstonecards.application.classpager.ClassPagerViewModel
@@ -29,10 +30,12 @@ val utilModules = module {
 }
 
 val dataModules = module {
-    // TODO: Delete singleton pattern in classes
-    single { CardService.getInstance() }
-    single { CardDatabase.getInstance(androidApplication()).cardDao() }
-    single { UserSession.getInstance(androidApplication()) }
+    single { CardService().cardApi }
+    single {
+        Room.databaseBuilder(androidApplication(), CardDatabase::class.java,
+                CardDatabase.DATABASE_NAME).build().cardDao()
+    }
+    single { UserSession(androidApplication()) }
     single { CardRepository(get(), get(), get(), get()) }
 }
 

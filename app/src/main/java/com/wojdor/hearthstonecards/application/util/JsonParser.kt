@@ -13,7 +13,7 @@ class JsonParser {
         return gson.toJson(objectToParse)
     }
 
-    fun <T> fromJson(type: Class<T>, json: String): T? {
+    fun <T> fromJson(type: Class<T>?, json: String): T? {
         var parsedObject: T? = null
         try {
             parsedObject = gson.fromJson(json, type)

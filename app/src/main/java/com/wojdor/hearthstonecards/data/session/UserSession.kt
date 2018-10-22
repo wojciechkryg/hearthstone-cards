@@ -6,7 +6,7 @@ import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.util.JsonParser
 import com.wojdor.hearthstonecards.domain.VersionInfo
 
-class UserSession private constructor(context: Context) {
+class UserSession(context: Context) {
 
     private val localeKey by lazy { context.getString(R.string.settings_preferences_locale_key) }
     private val sharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
@@ -34,14 +34,5 @@ class UserSession private constructor(context: Context) {
     companion object {
         private const val VERSION_INFO_KEY = "VERSION_INFO_KEY"
         private const val WAS_LANGUAGE_CHANGED_KEY = "WAS_LANGUAGE_CHANGED_KEY"
-
-        private var instance: UserSession? = null
-
-        fun getInstance(context: Context): UserSession {
-            if (instance == null) {
-                instance = UserSession(context)
-            }
-            return instance as UserSession
-        }
     }
 }

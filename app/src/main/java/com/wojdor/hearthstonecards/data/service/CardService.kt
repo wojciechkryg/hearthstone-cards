@@ -1,14 +1,12 @@
 package com.wojdor.hearthstonecards.data.service
 
-object CardService {
+class CardService {
 
-    private const val BASE_URL = "https://omgvamp-hearthstone-v1.p.mashape.com/"
-    private var instance: CardApi? = null
+    val cardApi by lazy {
+        ServiceGenerator(BASE_URL).createService(CardApi::class.java)
+    }
 
-    fun getInstance(): CardApi {
-        if (instance == null) {
-            instance = ServiceGenerator.getInstance(BASE_URL).createService(CardApi::class.java)
-        }
-        return instance as CardApi
+    companion object {
+        private const val BASE_URL = "https://omgvamp-hearthstone-v1.p.mashape.com/"
     }
 }

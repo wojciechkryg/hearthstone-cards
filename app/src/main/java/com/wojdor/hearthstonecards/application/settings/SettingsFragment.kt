@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.support.v7.preference.PreferenceFragmentCompat
 import com.bumptech.glide.Glide
 import com.wojdor.hearthstonecards.R
-import com.wojdor.hearthstonecards.data.session.UserSession
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class SettingsFragment : PreferenceFragmentCompat() {
+
+    private val viewModel: SettingsViewModel by sharedViewModel()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.settings_preferences)
@@ -24,7 +26,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun clearData() {
         clearCache()
-        context?.let { UserSession.getInstance(it).wasLanguageChanged = true }
+        viewModel.languageChanged()
     }
 
     private fun clearCache() {
