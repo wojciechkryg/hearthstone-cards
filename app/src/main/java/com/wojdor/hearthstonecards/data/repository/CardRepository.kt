@@ -52,13 +52,13 @@ class CardRepository(private val cardApi: CardApi,
     val classesWhichHaveCards: LiveData<List<String>>
         get() {
             val data = MutableLiveData<List<String>>()
-            Observable.fromCallable {
+            disposables.add(Observable.fromCallable {
                 val classNames = localVersionInfo.value?.classNames ?: emptyList()
                 classNames.filter { cardDao.getAmountOfCardsFromClass(it).isPositive }
             }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { data.setValue(it) }
+                    .subscribe { data.setValue(it) })
             return data
         }
 
@@ -110,9 +110,7 @@ class CardRepository(private val cardApi: CardApi,
         val threadCount = Runtime.getRuntime().availableProcessors()
         val threadPoolExecutor = Executors.newFixedThreadPool(threadCount)
         val scheduler = Schedulers.from(threadPoolExecutor)
-        val observableCardModels = cardModels.map {
-            Observable.just(it)
-        }
+        val observableCardModels = cardModels.map { Observable.just(it) }
         val groupIndex = AtomicInteger()
         disposables.add(Observable.merge(observableCardModels)
                 .groupBy { groupIndex.getAndIncrement() % threadCount }
