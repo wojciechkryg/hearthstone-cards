@@ -12,7 +12,7 @@ class FileStorage(private val context: Context) {
         val outputStream: FileOutputStream
         try {
             outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE)
-            bitmap.compress(Bitmap.CompressFormat.PNG, 50, outputStream)
+            bitmap.compress(Bitmap.CompressFormat.PNG, QUALITY, outputStream)
             outputStream.close()
         } catch (error: Exception) {
             Timber.e(error)
@@ -25,6 +25,7 @@ class FileStorage(private val context: Context) {
     }
 
     companion object {
+        private const val QUALITY = 50
         private const val PATH_FORMAT = "%s/%s"
     }
 }

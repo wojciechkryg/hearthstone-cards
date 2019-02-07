@@ -1,25 +1,19 @@
 package com.wojdor.hearthstonecards.application.util
 
-import android.content.Context
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import timber.log.Timber
 import java.util.concurrent.ExecutionException
 
-class CardImageDownloader(private val context: Context, private val fileStorage: FileStorage) {
+class CardImageDownloader(private val fileStorage: FileStorage) {
 
     fun getImage(fileName: String, locale: String) {
         try {
             val url = String.format(CARD_IMAGE_API, locale, fileName)
-            // TODO: Use Picasso instead of Glide
-            val bitmap = Glide.with(context)
-                    .asBitmap()
+            val bitmap = Picasso.get()
                     .load(url)
-                    .submit()
-                    .get().apply {
-                        setHasAlpha(true)
-                    }
+                    .get()
             fileStorage.write(fileName, bitmap)
-        } catch (error: InterruptedException) {
+        } catch (error: IllegalStateException) {
             Timber.e(error)
         } catch (error: ExecutionException) {
             Timber.e(error)

@@ -1,19 +1,15 @@
 package com.wojdor.hearthstonecards.application.card
 
 import android.os.Bundle
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
+import com.squareup.picasso.Picasso
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.base.BaseActivity
 import com.wojdor.hearthstonecards.application.extension.asHtml
 import com.wojdor.hearthstonecards.application.extension.copyOnLongClick
-import com.wojdor.hearthstonecards.application.extension.observe
 import com.wojdor.hearthstonecards.application.extension.observeNonNull
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.layout_card_details.*
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -28,8 +24,10 @@ class CardActivity : BaseActivity<CardViewModel>() {
     }
 
     private fun initComponents() {
+        val cardId = intent.getStringExtra(CARD_ID_EXTRA)
+        cardCardIv.transitionName = cardId
         initToolbar()
-        initDetails()
+        initDetails(cardId)
     }
 
     private fun initToolbar() {
@@ -37,9 +35,8 @@ class CardActivity : BaseActivity<CardViewModel>() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun initDetails() {
-        val cardId = intent.getStringExtra(CARD_ID_EXTRA)
-        viewModel.getCardImage(cardId).observe(this) { loadCardImage(it) }
+    private fun initDetails(cardId: String) {
+        viewModel.getCardImage(cardId).observeNonNull(this) { loadCardImage(it) }
         viewModel.getCardByCardId(cardId).observeNonNull(this) {
             initCardDetails(it)
             initCopy(it)
@@ -77,12 +74,12 @@ class CardActivity : BaseActivity<CardViewModel>() {
         }
     }
 
-    private fun loadCardImage(file: File?) {
-        Glide.with(this)
+    private fun loadCardImage(file: File) {
+        Picasso.get()
                 .load(file)
-                .apply(RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .skipMemoryCache(true))
+                .placeholder(R.drawable.ic_card)
+                .error(R.drawable.ic_card)
+                .fit()
                 .into(cardCardIv)
     }
 

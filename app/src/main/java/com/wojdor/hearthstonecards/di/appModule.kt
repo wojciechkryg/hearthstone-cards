@@ -26,7 +26,7 @@ val viewModelModules = module {
 
 val utilModules = module {
     single { FileStorage(androidApplication()) }
-    single { CardImageDownloader(androidApplication(), get()) }
+    single { CardImageDownloader(get()) }
 }
 
 val dataModules = module {

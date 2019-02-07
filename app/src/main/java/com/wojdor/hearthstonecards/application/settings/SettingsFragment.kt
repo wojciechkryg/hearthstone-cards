@@ -3,7 +3,7 @@ package com.wojdor.hearthstonecards.application.settings
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.preference.PreferenceFragmentCompat
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import com.wojdor.hearthstonecards.R
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -30,10 +30,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun clearCache() {
-        context?.let {
-            Thread { Glide.get(it).clearDiskCache() }.start()
-            Glide.get(it).clearMemory()
-        }
+        //TODO: Invalidate cache
     }
 
     private fun relaunchApp() {

@@ -1,6 +1,7 @@
 package com.wojdor.hearthstonecards.application
 
 import android.app.Application
+import com.squareup.picasso.Picasso
 import com.wojdor.hearthstonecards.di.appModules
 import org.koin.android.ext.android.startKoin
 
@@ -12,6 +13,7 @@ class HearthstoneCardsApp : Application() {
         super.onCreate()
         initKoin()
         initTimber()
+        Picasso.get().setIndicatorsEnabled(true)
     }
 
     private fun initKoin() {
