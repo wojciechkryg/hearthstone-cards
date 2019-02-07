@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -37,8 +38,8 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/card_iv_content_description"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_card"
-                android:transitionName="@string/card_transition" />
+                android:transitionName="@string/card_transition"
+                tools:src="@drawable/ic_card" />
 
             <include layout="@layout/layout_card_details" />
         </LinearLayout>

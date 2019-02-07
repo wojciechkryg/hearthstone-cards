@@ -1,12 +1,13 @@
 package com.wojdor.hearthstonecards.application.classcards
 
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.view.ViewGroup
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.application.extension.inflate
 import com.wojdor.hearthstonecards.domain.Card
 
-class ClassCardsAdapter(private val onCardClick: (Card) -> Unit) : RecyclerView.Adapter<ClassCardViewHolder>() {
+class ClassCardsAdapter(private val onCardClick: (View, Card) -> Unit) : RecyclerView.Adapter<ClassCardViewHolder>() {
 
     var classCards = mutableListOf<Card>()
 
@@ -24,8 +25,7 @@ class ClassCardsAdapter(private val onCardClick: (Card) -> Unit) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ClassCardViewHolder, position: Int) {
-        val card = classCards[position]
-        holder.bind(card, onCardClick)
+        holder.bind(classCards[position], onCardClick)
     }
 
     override fun getItemCount() = classCards.size

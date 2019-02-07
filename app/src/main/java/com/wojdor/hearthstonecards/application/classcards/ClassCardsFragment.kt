@@ -34,16 +34,16 @@ class ClassCardsFragment : BaseFragment<ClassCardsViewModel>() {
     }
 
     private fun initComponents() {
-        classCardsAdapter = ClassCardsAdapter { openCardActivity(it) }
+        classCardsAdapter = ClassCardsAdapter { view, card -> openCardActivity(view, card) }
         with(classCardsCardsRv) {
             layoutManager = GridLayoutManager(context, calculateNumberOfColumns())
             adapter = classCardsAdapter
         }
     }
 
-    private fun openCardActivity(card: Card) {
-        val bundle = ActivityOptions.makeSceneTransitionAnimation(activity,
-                itemCardCardIv, itemCardCardIv.transitionName).toBundle()
+    private fun openCardActivity(view: View, card: Card) {
+        val bundle = ActivityOptions.makeSceneTransitionAnimation(activity, view,
+                view.transitionName).toBundle()
         val intent = Intent(context, CardActivity::class.java).apply {
             putExtra(CardActivity.CARD_ID_EXTRA, card.cardId)
         }
