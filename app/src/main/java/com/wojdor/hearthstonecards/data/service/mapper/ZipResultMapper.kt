@@ -6,7 +6,7 @@ object ZipResultMapper {
 
     private const val HERO_CARD = "hero"
 
-    fun map(objects: Array<Any>): List<CardModel> {
+    fun mapToCardModels(objects: Array<Any>): List<CardModel> {
         val allCards = mutableListOf<CardModel>()
         val cardModels = objects.filter { isListOfCardModels(it) }
         cardModels.forEach { ignoreHeroCards(allCards, it as List<CardModel>) }
