@@ -1,7 +1,7 @@
 package com.wojdor.hearthstonecards.data.database
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.wojdor.hearthstonecards.domain.Card
 
 @Database(entities = [(Card::class)], version = 1, exportSchema = false)

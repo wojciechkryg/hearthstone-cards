@@ -1,8 +1,8 @@
 package com.wojdor.hearthstonecards.app.view
 
 import android.content.Context
-import android.support.v7.preference.ListPreference
 import android.util.AttributeSet
+import androidx.preference.ListPreference
 
 class SummaryValueListPreference : ListPreference {
 

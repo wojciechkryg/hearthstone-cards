@@ -1,6 +1,6 @@
 package com.wojdor.hearthstonecards.app.base
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.wojdor.hearthstonecards.data.repository.CardRepository
 
 abstract class BaseViewModel(protected val repository: CardRepository) : ViewModel() {

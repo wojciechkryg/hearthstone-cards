@@ -1,6 +1,6 @@
 package com.wojdor.hearthstonecards.di
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.wojdor.hearthstonecards.app.card.CardViewModel
 import com.wojdor.hearthstonecards.app.classcards.ClassCardsViewModel
 import com.wojdor.hearthstonecards.app.classpager.ClassPagerViewModel

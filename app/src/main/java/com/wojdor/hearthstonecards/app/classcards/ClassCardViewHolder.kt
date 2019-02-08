@@ -1,8 +1,8 @@
 package com.wojdor.hearthstonecards.app.classcards
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.app.util.FileStorage

@@ -1,7 +1,7 @@
 package com.wojdor.hearthstonecards.app.classpager
 
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.wojdor.hearthstonecards.app.classcards.ClassCardsFragment
 import java.util.*
 

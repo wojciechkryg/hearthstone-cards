@@ -1,7 +1,7 @@
 package com.wojdor.hearthstonecards.app.splash
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.wojdor.hearthstonecards.app.base.BaseViewModel
 import com.wojdor.hearthstonecards.app.extension.notEquals
 import com.wojdor.hearthstonecards.app.extension.setDifferentValue

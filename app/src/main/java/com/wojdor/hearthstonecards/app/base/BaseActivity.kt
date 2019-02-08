@@ -1,6 +1,6 @@
 package com.wojdor.hearthstonecards.app.base
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity() {
 

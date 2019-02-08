@@ -2,7 +2,7 @@ package com.wojdor.hearthstonecards.app.settings
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceFragmentCompat
 import com.wojdor.hearthstonecards.R
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
