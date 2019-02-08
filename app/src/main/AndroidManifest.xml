@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.wojdor.hearthstonecards.application.HearthstoneCardsApp"
+        android:name="com.wojdor.hearthstonecards.app.HearthstoneCardsApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.wojdor.hearthstonecards.application.classpager.ClassPagerActivity" />
+        <activity android:name="com.wojdor.hearthstonecards.app.classpager.ClassPagerActivity" />
 
         <activity
-            android:name="com.wojdor.hearthstonecards.application.splash.SplashActivity"
+            android:name="com.wojdor.hearthstonecards.app.splash.SplashActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -29,14 +29,14 @@
         </activity>
 
         <activity
-            android:name="com.wojdor.hearthstonecards.application.card.CardActivity"
+            android:name="com.wojdor.hearthstonecards.app.card.CardActivity"
             android:theme="@style/ExitTransitionTheme" />
 
         <activity
-            android:name="com.wojdor.hearthstonecards.application.settings.SettingsActivity"
+            android:name="com.wojdor.hearthstonecards.app.settings.SettingsActivity"
             android:theme="@style/ExitTransitionTheme" />
 
-        <receiver android:name="com.wojdor.hearthstonecards.application.widget.FlavorWidget">
+        <receiver android:name="com.wojdor.hearthstonecards.app.widget.FlavorWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

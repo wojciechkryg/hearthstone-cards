@@ -3,7 +3,7 @@ package com.wojdor.hearthstonecards.data.session
 import android.content.Context
 import android.preference.PreferenceManager
 import com.wojdor.hearthstonecards.R
-import com.wojdor.hearthstonecards.application.util.JsonParser
+import com.wojdor.hearthstonecards.app.util.JsonParser
 import com.wojdor.hearthstonecards.domain.VersionInfo
 
 class UserSession(context: Context) {

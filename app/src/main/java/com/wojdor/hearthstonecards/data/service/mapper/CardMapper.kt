@@ -1,6 +1,6 @@
 package com.wojdor.hearthstonecards.data.service.mapper
 
-import com.wojdor.hearthstonecards.application.extension.empty
+import com.wojdor.hearthstonecards.app.extension.empty
 import com.wojdor.hearthstonecards.data.service.model.CardModel
 import com.wojdor.hearthstonecards.domain.Card
 import timber.log.Timber

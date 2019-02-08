@@ -1,13 +1,13 @@
 package com.wojdor.hearthstonecards.di
 
 import android.arch.persistence.room.Room
-import com.wojdor.hearthstonecards.application.card.CardViewModel
-import com.wojdor.hearthstonecards.application.classcards.ClassCardsViewModel
-import com.wojdor.hearthstonecards.application.classpager.ClassPagerViewModel
-import com.wojdor.hearthstonecards.application.settings.SettingsViewModel
-import com.wojdor.hearthstonecards.application.splash.SplashViewModel
-import com.wojdor.hearthstonecards.application.util.CardImageDownloader
-import com.wojdor.hearthstonecards.application.util.FileStorage
+import com.wojdor.hearthstonecards.app.card.CardViewModel
+import com.wojdor.hearthstonecards.app.classcards.ClassCardsViewModel
+import com.wojdor.hearthstonecards.app.classpager.ClassPagerViewModel
+import com.wojdor.hearthstonecards.app.settings.SettingsViewModel
+import com.wojdor.hearthstonecards.app.splash.SplashViewModel
+import com.wojdor.hearthstonecards.app.util.CardImageDownloader
+import com.wojdor.hearthstonecards.app.util.FileStorage
 import com.wojdor.hearthstonecards.data.database.CardDatabase
 import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.data.service.CardService

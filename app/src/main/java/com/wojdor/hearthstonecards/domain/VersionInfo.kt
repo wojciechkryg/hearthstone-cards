@@ -1,7 +1,7 @@
 package com.wojdor.hearthstonecards.domain
 
 import android.os.Parcelable
-import com.wojdor.hearthstonecards.application.extension.empty
+import com.wojdor.hearthstonecards.app.extension.empty
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

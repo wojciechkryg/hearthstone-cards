@@ -2,8 +2,8 @@ package com.wojdor.hearthstonecards.data.repository
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.wojdor.hearthstonecards.application.extension.isPositive
-import com.wojdor.hearthstonecards.application.util.CardImageDownloader
+import com.wojdor.hearthstonecards.app.extension.isPositive
+import com.wojdor.hearthstonecards.app.util.CardImageDownloader
 import com.wojdor.hearthstonecards.data.database.CardDao
 import com.wojdor.hearthstonecards.data.service.CardApi
 import com.wojdor.hearthstonecards.data.service.mapper.CardMapper
