@@ -3,7 +3,6 @@
     <dimen name="splash_loading_size">96dp</dimen>
     <dimen name="splash_info_tv_margin_top">16dp</dimen>
 
-    <dimen name="class_cards_cards_rv_padding_bottom">50dp</dimen>
     <dimen name="card_card_details_label_padding_start">16dp</dimen>
     <dimen name="card_card_details_label_padding_end">16dp</dimen>
     <dimen name="card_card_details_label_padding_top">16dp</dimen>
