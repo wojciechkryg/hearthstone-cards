@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wojdor.hearthcards">
+    package="com.wojdor.hearthstonecards">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".application.HearthCardsApp"
+        android:name="com.wojdor.hearthstonecards.app.HearthstoneCardsApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".application.classpager.ClassPagerActivity" />
+        <activity android:name="com.wojdor.hearthstonecards.app.classpager.ClassPagerActivity" />
 
         <activity
-            android:name=".application.splash.SplashActivity"
+            android:name="com.wojdor.hearthstonecards.app.splash.SplashActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -29,18 +29,14 @@
         </activity>
 
         <activity
-            android:name=".application.card.CardActivity"
+            android:name="com.wojdor.hearthstonecards.app.card.CardActivity"
             android:theme="@style/ExitTransitionTheme" />
 
         <activity
-            android:name=".application.settings.SettingsActivity"
+            android:name="com.wojdor.hearthstonecards.app.settings.SettingsActivity"
             android:theme="@style/ExitTransitionTheme" />
 
-        <service
-            android:name=".application.update.UpdateIntentService"
-            android:exported="false" />
-
-        <receiver android:name=".application.widget.FlavorWidget">
+        <receiver android:name="com.wojdor.hearthstonecards.app.widget.FlavorWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

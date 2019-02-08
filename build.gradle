@@ -1,33 +1,35 @@
 buildscript {
 
     ext {
-        compile_sdk_version = 27
+        compile_sdk_version = 28
         min_sdk_version = 21
-        target_sdk_version = 27
+        target_sdk_version = 28
         version_code = 1
         version_name = "1.0"
-        application_id = "com.wojdor.hearthcards"
+        application_id = "com.wojdor.hearthstonecards"
 
-        gradle_version = '3.0.1'
+        kotlin_version = '1.3.21'
+        anko_version = '0.10.5'
+        appcompat_version = '1.0.2'
+        gradle_version = '3.3.0'
         fabric_version = '1.25.4'
-        google_services_version = '4.0.1'
-        android_support_version = '27.1.1'
-        constraint_layout_version = '1.1.2'
-        room_version = '1.1.1'
-        lifecycle_version = '1.1.1'
-        crashlytics_version = '2.9.4'
-        firebase_core_version = "16.0.1"
-        ads_version = '15.0.1'
-        rx_java_version = "2.2.0"
-        rx_android_version = "2.0.2"
-        butterknife_version = '8.8.1'
+        google_services_version = '4.2.0'
+        android_support_version = '1.0.0'
+        constraint_layout_version = '1.1.3'
+        room_version = '2.0.0-rc01'
+        lifecycle_version = '2.0.0-rc01'
+        crashlytics_version = '2.9.8'
+        firebase_core_version = '16.0.6'
+        rx_kotlin_version = '2.3.0'
+        rx_android_version = '2.1.0'
+        koin_version = '1.0.2'
         timber_version = '4.7.1'
         retrofit_version = '2.4.0'
-        glide_version = '4.7.1'
+        picasso_version = '2.71828'
         lottie_version = '2.5.4'
         junit_version = '4.12'
-        runner_version = '1.0.2'
-        espresso_version = '3.0.2'
+        runner_version = '1.1.0'
+        espresso_version = '3.1.0'
     }
     repositories {
         google()
@@ -40,6 +42,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "io.fabric.tools:gradle:$fabric_version"
         classpath "com.google.gms:google-services:$google_services_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -48,7 +51,7 @@ allprojects {
         google()
         jcenter()
         maven {
-            url 'https://maven.fabric.io/public'
+            url 'https://maven.google.com/'
         }
     }
 }
