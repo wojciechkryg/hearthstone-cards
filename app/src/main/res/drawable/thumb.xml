@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners
+        android:bottomLeftRadius="@dimen/thumb_radius"
+        android:bottomRightRadius="@dimen/thumb_radius"
+        android:topLeftRadius="@dimen/thumb_radius"
+        android:topRightRadius="@dimen/thumb_radius" />
+
+    <padding
+        android:paddingLeft="@dimen/thumb_padding"
+        android:paddingRight="@dimen/thumb_padding" />
+
+    <solid android:color="@color/colorPrimary" />
+</shape>
