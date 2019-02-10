@@ -45,6 +45,7 @@ class CardActivity : BaseActivity<CardViewModel>() {
 
     private fun initCardDetails(card: Card) {
         with(card) {
+            cardCardIv.contentDescription = name
             cardCardName.text = name
             cardCardEffect.text = text.asHtml()
             cardCardSet.text = set
