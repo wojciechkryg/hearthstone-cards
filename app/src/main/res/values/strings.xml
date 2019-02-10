@@ -6,7 +6,6 @@
     <string name="card_name">Name</string>
     <string name="card_effect">Effect</string>
     <string name="card_set">Set</string>
-    <string name="card_type">Type</string>
     <string name="card_rarity">Rarity</string>
     <string name="card_class">Class</string>
     <string name="card_flavor">Flavor</string>
@@ -17,6 +16,6 @@
 
     <string name="settings_activity_title">Settings</string>
     <string name="settings_activity_general_header">General</string>
-    <string name="settings_activity_language">Language</string>
+    <string name="settings_activity_cards_language">Cards Language</string>
     <string name="menu_class_pager_settings">Settings</string>
 </resources>

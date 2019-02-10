@@ -7,6 +7,6 @@
             android:entries="@array/locales"
             android:entryValues="@array/localeValues"
             android:key="@string/settings_preferences_locale_key"
-            android:title="@string/settings_activity_language" />
+            android:title="@string/settings_activity_cards_language" />
     </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>
