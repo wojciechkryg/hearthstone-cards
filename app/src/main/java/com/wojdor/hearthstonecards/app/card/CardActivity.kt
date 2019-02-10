@@ -75,7 +75,7 @@ class CardActivity : BaseActivity<CardViewModel>() {
     }
 
     private fun loadCardImage(file: File) {
-        ImageLoader.load(file, R.drawable.ic_card, R.drawable.ic_card, cardCardIv)
+        ImageLoader.load(cardCardIv, file)
     }
 
     override fun onSupportNavigateUp(): Boolean {

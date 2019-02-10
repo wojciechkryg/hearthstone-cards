@@ -3,7 +3,6 @@ package com.wojdor.hearthstonecards.app.classcards
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.app.util.FileStorage
 import com.wojdor.hearthstonecards.app.util.ImageLoader
 import com.wojdor.hearthstonecards.domain.Card
@@ -26,6 +25,6 @@ class ClassCardViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinCompo
 
     private fun loadCardImage(itemCardCardIv: ImageView, card: Card) {
         val imageFile = fileStorage.get(card.cardId)
-        ImageLoader.load(imageFile, R.drawable.ic_card, R.drawable.ic_card, itemCardCardIv)
+        ImageLoader.load(itemCardCardIv, imageFile)
     }
 }
