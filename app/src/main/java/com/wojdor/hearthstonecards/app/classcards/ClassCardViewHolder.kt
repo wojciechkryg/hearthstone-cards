@@ -3,8 +3,8 @@ package com.wojdor.hearthstonecards.app.classcards
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.wojdor.hearthstonecards.app.util.FileStorage
 import com.wojdor.hearthstonecards.app.util.ImageLoader
+import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.item_card.view.*
 import org.koin.standalone.KoinComponent
@@ -12,7 +12,7 @@ import org.koin.standalone.inject
 
 class ClassCardViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinComponent {
 
-    private val fileStorage: FileStorage by inject()
+    private val repository: CardRepository by inject()
 
     fun bind(card: Card, onCardClick: (View, Card) -> Unit) {
         with(itemView) {
@@ -24,7 +24,7 @@ class ClassCardViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinCompo
     }
 
     private fun loadCardImage(itemCardCardIv: ImageView, card: Card) {
-        val imageFile = fileStorage.get(card.cardId)
+        val imageFile = repository.getCardImageFromStorage(card.cardId)
         ImageLoader.load(itemCardCardIv, imageFile)
     }
 }

@@ -17,7 +17,7 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val viewModelModules = module {
-    viewModel { CardViewModel(get(), get()) }
+    viewModel { CardViewModel(get()) }
     viewModel { ClassCardsViewModel(get()) }
     viewModel { ClassPagerViewModel(get()) }
     viewModel { SettingsViewModel(get()) }

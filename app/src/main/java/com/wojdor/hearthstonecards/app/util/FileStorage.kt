@@ -24,6 +24,10 @@ class FileStorage(private val context: Context) {
         return File(path)
     }
 
+    fun deleteDownloadedFiles() {
+        context.filesDir.deleteRecursively()
+    }
+
     companion object {
         private const val QUALITY = 50
         private const val PATH_FORMAT = "%s/%s"

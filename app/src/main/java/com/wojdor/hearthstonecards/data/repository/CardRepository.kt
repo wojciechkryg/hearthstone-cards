@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.wojdor.hearthstonecards.app.extension.isPositive
 import com.wojdor.hearthstonecards.app.util.CardImageDownloader
+import com.wojdor.hearthstonecards.app.util.FileStorage
 import com.wojdor.hearthstonecards.data.database.CardDao
 import com.wojdor.hearthstonecards.data.service.CardApi
 import com.wojdor.hearthstonecards.data.service.mapper.CardMapper
@@ -19,15 +20,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+import java.io.File
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicInteger
 
 class CardRepository(private val cardApi: CardApi,
                      private val cardDao: CardDao,
-                     private val userSession: UserSession,
-                     private val cardImageDownloader: CardImageDownloader) {
+                     private val fileStorage: FileStorage,
+                     private val userSession: UserSession) {
 
     private val disposables by lazy { CompositeDisposable() }
+    private val cardImageDownloader by lazy { CardImageDownloader(fileStorage) }
 
     val remoteVersionInfo: LiveData<VersionInfo>
         get() {
@@ -106,7 +109,6 @@ class CardRepository(private val cardApi: CardApi,
     }
 
     private fun downloadImagesForCards(cardModels: List<CardModel>, versionInfo: VersionInfo, locale: String) {
-        val time = System.currentTimeMillis()
         val threadCount = Runtime.getRuntime().availableProcessors()
         val threadPoolExecutor = Executors.newFixedThreadPool(threadCount)
         val scheduler = Schedulers.from(threadPoolExecutor)
@@ -121,11 +123,16 @@ class CardRepository(private val cardApi: CardApi,
                 }
                 .subscribeOn(Schedulers.computation())
                 .subscribe({}, Timber::e, {
-                    Timber.d("${(System.currentTimeMillis() - time) / 1000}")
                     val cards = CardMapper.map(cardModels)
                     cardDao.insertCards(cards)
                     setLocalVersionInfo(versionInfo)
                 }))
+    }
+
+    fun getCardImageFromStorage(cardId: String): File = fileStorage.get(cardId)
+
+    fun deleteAllCardData() {
+        fileStorage.deleteDownloadedFiles()
     }
 
     fun onDestroy() {
