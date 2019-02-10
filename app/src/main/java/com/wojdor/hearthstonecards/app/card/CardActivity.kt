@@ -1,12 +1,12 @@
 package com.wojdor.hearthstonecards.app.card
 
 import android.os.Bundle
-import com.squareup.picasso.Picasso
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.app.base.BaseActivity
 import com.wojdor.hearthstonecards.app.extension.asHtml
 import com.wojdor.hearthstonecards.app.extension.copyOnLongClick
 import com.wojdor.hearthstonecards.app.extension.observeNonNull
+import com.wojdor.hearthstonecards.app.util.ImageLoader
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.layout_card_details.*
@@ -75,12 +75,7 @@ class CardActivity : BaseActivity<CardViewModel>() {
     }
 
     private fun loadCardImage(file: File) {
-        Picasso.get()
-                .load(file)
-                .placeholder(R.drawable.ic_card)
-                .error(R.drawable.ic_card)
-                .fit()
-                .into(cardCardIv)
+        ImageLoader.load(file, R.drawable.ic_card, R.drawable.ic_card, cardCardIv)
     }
 
     override fun onSupportNavigateUp(): Boolean {

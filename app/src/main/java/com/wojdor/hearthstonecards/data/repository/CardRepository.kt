@@ -116,7 +116,7 @@ class CardRepository(private val cardApi: CardApi,
                 .groupBy { groupIndex.getAndIncrement() % threadCount }
                 .flatMap {
                     it.observeOn(scheduler).map {
-                        cardImageDownloader.getImage(it.cardId, locale)
+                        cardImageDownloader.downloadToStorage(it.cardId, locale)
                     }
                 }
                 .subscribeOn(Schedulers.computation())
