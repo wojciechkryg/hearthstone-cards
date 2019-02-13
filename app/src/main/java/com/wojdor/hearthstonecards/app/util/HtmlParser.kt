@@ -1,12 +1,13 @@
 package com.wojdor.hearthstonecards.app.util
 
+import android.os.Build
 import android.text.Html
 import android.text.Spanned
 
 class HtmlParser {
 
     fun asHtml(text: String?): Spanned {
-        if (text == null) return Html.fromHtml(EMPTY)
+        if (text == null) return fromHtml(EMPTY)
         val editedText = text
                 .replace(ENTER_SIGN, ENTER_HTML)
                 .replace(DOLLAR_SIGN, EMPTY)
@@ -16,11 +17,20 @@ class HtmlParser {
     }
 
     fun asString(text: String?): String {
-        return if (text == null) EMPTY else Html.fromHtml(text).toString()
+        return if (text == null) EMPTY else fromHtml(text).toString()
                 .replace(ENTER_SIGN, ENTER)
                 .replace(DOLLAR_SIGN, EMPTY)
                 .replace(UNDERLINE, SPACE)
                 .replace(WEIRD_X_SYMBOL, EMPTY)
+    }
+
+    private fun fromHtml(text: String): Spanned {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            Html.fromHtml(text)
+        }
+
     }
 
     companion object {

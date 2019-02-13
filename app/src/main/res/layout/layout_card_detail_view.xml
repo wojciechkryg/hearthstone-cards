@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardDetailContentLl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/cardDetailLabelTv"
+        style="@style/CardDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Label" />
+
+    <TextView
+        android:id="@+id/cardDetailTextTv"
+        style="@style/CardDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Text" />
+</LinearLayout>

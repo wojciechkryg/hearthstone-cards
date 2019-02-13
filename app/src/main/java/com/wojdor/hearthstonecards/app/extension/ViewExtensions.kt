@@ -7,9 +7,9 @@ import android.view.View
 import com.wojdor.hearthstonecards.R
 import org.jetbrains.anko.toast
 
-fun View.copyOnLongClick(labelResId: Int, text: String) {
-    setOnLongClickListener { _ ->
-        val label = context.getString(labelResId)
+fun View.copyOnLongClick(label: CharSequence?, text: CharSequence?) {
+    if (label == null || text == null) return
+    setOnLongClickListener {
         val formattedText = text.fromHtml()
         val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         clipboardManager.primaryClip = ClipData.newPlainText(label, formattedText)

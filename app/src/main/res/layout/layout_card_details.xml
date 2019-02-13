@@ -1,105 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/cardCardNameLabel"
-        style="@style/CardDetailLabel"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardNameCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/card_name" />
-
-    <TextView
-        android:id="@+id/cardCardName"
-        style="@style/CardDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:label="@string/card_name"
         tools:text="Naturalize" />
 
-    <TextView
-        android:id="@+id/cardCardEffectLabel"
-        style="@style/CardDetailLabel"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardEffectCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/card_effect" />
+        app:label="@string/card_effect"
+        tools:text="Destroy a minion. Your opponent draws 2 cards." />
 
-    <TextView
-        android:id="@+id/cardCardEffect"
-        style="@style/CardDetail"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardSetCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Zniszcz stronnika. Przeciwnik dobiera\n2 karty." />
-
-    <TextView
-        android:id="@+id/cardCardSetLabel"
-        style="@style/CardDetailLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/card_set" />
-
-    <TextView
-        android:id="@+id/cardCardSet"
-        style="@style/CardDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:label="@string/card_set"
         tools:text="Classic" />
 
-    <TextView
-        android:id="@+id/cardCardRarityLabel"
-        style="@style/CardDetailLabel"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardRarityCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/card_rarity" />
-
-    <TextView
-        android:id="@+id/cardCardRarity"
-        style="@style/CardDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:label="@string/card_rarity"
         tools:text="Common" />
 
-    <TextView
-        android:id="@+id/cardCardClassLabel"
-        style="@style/CardDetailLabel"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardClassCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/card_class" />
-
-    <TextView
-        android:id="@+id/cardCardClass"
-        style="@style/CardDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:label="@string/card_class"
         tools:text="Druid" />
 
-    <TextView
-        android:id="@+id/cardCardFlavorLabel"
-        style="@style/CardDetailLabel"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardFlavorCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/card_flavor" />
-
-    <TextView
-        android:id="@+id/cardCardFlavor"
-        style="@style/CardDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:label="@string/card_flavor"
         tools:text="Another one bites the dust." />
 
-    <TextView
-        android:id="@+id/cardCardArtistLabel"
-        style="@style/CardDetailLabel"
+    <com.wojdor.hearthstonecards.app.view.CardDetailView
+        android:id="@+id/cardArtistCardDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/card_artist" />
-
-    <TextView
-        android:id="@+id/cardCardArtist"
-        style="@style/CardDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:label="@string/card_flavor"
         tools:text="Leo Che" />
 </LinearLayout>
