@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.wojdor.hearthstonecards.R
 import com.wojdor.hearthstonecards.app.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_settings.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsActivity : BaseActivity<SettingsViewModel>() {
 

@@ -10,7 +10,7 @@ import com.wojdor.hearthstonecards.app.extension.observeNonNull
 import com.wojdor.hearthstonecards.app.util.Language
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.toast
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashActivity : BaseActivity<SplashViewModel>() {
 

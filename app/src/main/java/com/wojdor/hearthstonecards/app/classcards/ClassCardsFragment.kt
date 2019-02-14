@@ -15,7 +15,7 @@ import com.wojdor.hearthstonecards.app.extension.inflate
 import com.wojdor.hearthstonecards.app.extension.observeNonNull
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.fragment_class_cards.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ClassCardsFragment : BaseFragment<ClassCardsViewModel>() {
 

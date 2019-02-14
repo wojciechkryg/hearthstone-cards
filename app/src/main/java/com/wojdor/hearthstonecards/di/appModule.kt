@@ -13,7 +13,7 @@ import com.wojdor.hearthstonecards.data.repository.CardRepository
 import com.wojdor.hearthstonecards.data.service.CardService
 import com.wojdor.hearthstonecards.data.session.UserSession
 import org.koin.android.ext.koin.androidApplication
-import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val viewModelModules = module {

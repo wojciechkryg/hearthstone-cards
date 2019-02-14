@@ -9,7 +9,7 @@ import com.wojdor.hearthstonecards.app.util.ImageLoader
 import com.wojdor.hearthstonecards.domain.Card
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.layout_card_details.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 class CardActivity : BaseActivity<CardViewModel>() {
